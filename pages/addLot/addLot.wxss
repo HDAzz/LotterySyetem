@@ -1,0 +1,111 @@
+page{
+    background-color: #79ACED;
+}
+.titleContainer{
+    height: 160rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 45rpx;
+    color: white;
+    font-family: '思源黑体';
+    font-weight: bold;
+}
+.formContainer{
+    border-top-left-radius: 100rpx;
+    border-top-right-radius: 100rpx;
+    background-color:#F2F0F2;   
+}
+.circle-border{
+    border: 1rpx solid black;
+    border-radius: 15rpx;
+}
+.center{
+    text-align: center;
+}
+.tips{
+    color: #9A9A9A;
+    font-size: 25rpx;
+}
+.section{
+    display: flex;
+    flex-direction: row;
+    margin: 20rpx;
+    padding-top: 30rpx;
+    padding-left: 17rpx;
+  }
+  .section view{
+    margin-right: 20rpx;
+  }
+  .btn-area{
+    margin: 20rpx;
+  }
+  button{
+    margin: 10rpx 0;
+  }
+
+
+  .table {
+    display: flex;
+    flex-direction: column;     /* 排列形式: 向下 */
+    margin-top: 50rpx;
+    margin-bottom: 50rpx;
+    margin-left: 20rpx;
+}
+  
+.tr {
+    width: 150%;    /* 15% + 25% + 25% + 85% = 150%*/
+    display: flex;
+    flex-direction: row;
+}
+
+.th_1, .th_2, .th_3, .th_4, .td_1, .td_2, .td_3, .td_4 { /* 公有的属性 */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;            /* 自动换行 */
+    text-align: center;         /* 文本居中 */
+    justify-content:center;     /* 主轴居中 */
+    align-items: center;        /* 交叉轴居中 */
+    border-top: 1px solid #dadada;      /* 单元格上线框 */
+    border-bottom: 1px solid #dadada;   /* 单元格下线框 */
+    border-left: 1px solid #dadada;     /* 单元格左线框 */
+    border-right: 1px solid #dadada;    /* 单元格右线框 */
+}
+
+.th_1, .th_2, .th_3, .th_4 {
+    font-weight: 800;             /* 字体加重 */
+    background-color:#B3CCF4;   /* 背景色 */
+}
+
+.td_1, .td_2, .td_3, .td_4 {
+    height: 50px;
+    background-color:#edf3e9;   /* 背景色 */
+}
+
+.th_1, .td_1 {
+    width: 30%;
+}
+
+.th_2, .td_2 {
+    width: 30%;
+}
+
+.th_3, .td_3 {
+    width: 25%;
+}
+
+.th_4, .td_4 {
+    width: 85%;
+}
+
+.button_box {
+    margin-top: 30px;
+    display: flex;
+}
+
+.button_style {
+    width: 50%;
+    color: cornflowerblue;
+    background-color: rgb(233, 207, 186);
+}

@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<view class="container">
+    <!-- <view class="headerContainer"></view> -->
+    <view class="userInfoContainer">
+        <view class="userInfoBox">
+            <view class="userinfo">
+                <block wx:if="{{canIUseOpenData}}">
+                    <view class="userinfo-avatar">
+                        <open-data type="userAvatarUrl"></open-data>
+                    </view>
+                    <open-data type="userNickName"></open-data>
+                </block>
+                <block wx:elif="{{!hasUserInfo}}">
+                    <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+                    <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+                    <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+                </block>
+                <block wx:else>
+                    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="functionsContainer">
+        <button style="width: 499rpx;" bindtap="participationBtnTap" class="funcBtn">
+            <image class="btn-img" src="/images/participation.svg"></image>
+            <text class="btn-text">我参与的抽签</text>
+            <image class="btn-arrow" src="/images/arrow.svg"></image>
+        </button>
+        <button style="width: 499rpx;" bindtap="myLogsBtnTap" class="funcBtn">
+            <image class="btn-img" src="/images/mylot.svg"></image>
+            <text class="btn-text">我创建的抽签</text>
+            <image class="btn-arrow" src="/images/arrow.svg"></image>
+        </button>
+        <button style="width: 499rpx;" bindtap="addTemplateBtnTap" class="funcBtn">
+            <image class="btn-img" src="/images/template.svg"></image>
+            <text class="btn-text">抽签模板</text>
+            <image class="btn-arrow" src="/images/arrow.svg"></image>
+        </button>
+        <view><image src="/images/addLotButton.png" bindtap="addLogBtnTap" class="addLot" mode="heightFix"></image></view>
+    </view>
+</view>

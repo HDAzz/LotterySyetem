@@ -1,0 +1,92 @@
+<view class="titleContainer">
+    创建抽签
+</view>
+<view class="formContainer">
+    <form class="myform" bindsubmit="formSubmit" bindreset="formReset">
+        <view class="section ">
+            <view class="section-title">抽签类型：</view>
+            <radio-group name="lotteryType">
+                <label>
+                    <radio value="all" checked="" />全部抽完
+                </label>
+            </radio-group>
+        </view>
+
+        <view class="section">
+            <view class="section-title">概率类型：</view>
+            <radio-group name="probabilityType">
+                <label>
+                    <radio value="概率模型" checked />概率模型
+                </label>
+                <label>
+                    <radio value="定量模型" />定量模型
+                </label>
+            </radio-group>
+        </view>
+        <view class="section">
+            <view class="section-title">标题:</view>
+            <input class="circle-border" name="title" placeholder-class="center" placeholder="" />
+        </view>
+        <view class="section ">
+            <view class="section-title">说明:</view>
+            <textarea class="circle-border" placeholder="" name="description" placeholder-class="center" />
+        </view>
+        <text class="tips">如果留空，则对应奖项平分剩余概率</text>
+        <scroll-view class="table" scroll-x="true">
+            <!-- 表头(即第一行) -->
+            <view class="tr">
+                <view class="th_1">奖项</view>
+                <view class="th_2">概率%</view>
+            </view>
+
+            <!-- 表格第四行 -->
+            <view wx:for="{{lists}}" wx:key="{{index}}">
+                <view class="tr">
+                    <input class="td_1"></input>
+                    <input class="td_2"></input>
+                </view>
+            </view>
+
+            <!-- <view class="button_box">
+                <button class='button_style' bindtap='add'>添加一行</button>
+                <button class='button_style' bindtap='del'>删除一行</button>
+            </view> -->
+        </scroll-view>
+
+        
+
+
+        <view class="section ">
+            <view class="section-title">奖项是否存在上限</view>
+            <switch name="pricesHaveLimit" />
+        </view>
+        <text class="tips">如果留空，则对应奖项无上限，优先级高于概率设置</text>
+        <!-- <view class="btn-area">
+            <button formType="submit">提交</button>
+            <button formType="reset">重置</button>
+        </view> -->
+        <!-- 奖项是否存在上限 -->
+        <scroll-view class="table" scroll-x="true">
+            <!-- 表头(即第一行) -->
+            <view class="tr">
+                <view class="th_1">奖项</view>
+                <view class="th_2">总量（次）</view>
+            </view>
+
+            <!-- 表格第四行 -->
+            <view wx:for="{{hasLimitLists}}" wx:key="{{index}}">
+                <view class="tr">
+                    <input class="td_1"></input>
+                    <input class="td_2"></input>
+                </view>
+            </view>
+
+            <!-- <view class="button_box">
+                <button class='button_style' bindtap='add'>添加一行</button>
+                <button class='button_style' bindtap='del'>删除一行</button>
+            </view> -->
+        </scroll-view>
+
+
+    </form>
+</view>
