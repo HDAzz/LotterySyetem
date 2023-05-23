@@ -47,6 +47,7 @@ page{
     /* 垂直居中 */
     align-items: center;
 }
+
 .btn-img
   {  
     width: 50rpx;
