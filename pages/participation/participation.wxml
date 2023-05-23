@@ -1,0 +1,26 @@
+<!--pages/participation.wxml-->
+<!-- <text>pages/participation.wxml</text> -->
+<view class="container">
+    <view class="title">
+        <view class="textbox">
+            <text class="mytext">我参与的抽签</text>
+        </view>
+    </view>
+    <view class="content">
+        <button style="width: 499rpx;" bindtap="participationBtnTap" class="funcBtn">
+            <image class="btn-img" src="/images/participation.svg"></image>
+            <text class="btn-text">第一个抽签</text>
+            <image class="btn-arrow" src="/images/arrow.svg"></image>
+        </button>
+        <button style="width: 499rpx;" bindtap="myLogsBtnTap" class="funcBtn">
+            <image class="btn-img" src="/images/mylot.svg"></image>
+            <text class="btn-text">第二个抽签</text>
+            <image class="btn-arrow" src="/images/arrow.svg"></image>
+        </button>
+        <button style="width: 499rpx;" bindtap="addTemplateBtnTap" class="funcBtn">
+            <image class="btn-img" src="/images/template.svg"></image>
+            <text class="btn-text">第三个抽签</text>
+            <image class="btn-arrow" src="/images/arrow.svg"></image>
+        </button>
+    </view>
+</view>

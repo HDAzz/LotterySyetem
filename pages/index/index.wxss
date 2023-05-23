@@ -1,0 +1,96 @@
+/**index.wxss**/
+page{
+    height: 100%;
+}
+.container{
+    background-color: #79ACED;  
+    position: relative;  
+}
+.headerContainer{
+    width: 100%;
+    height: 120rpx;
+}
+.userInfoContainer{
+    /* background-color: #79ACED; */
+    width: 100%;
+    height: calc(100%*556/1334);
+    /* 子元素中心居中 水平排列 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.userInfoBox
+{
+    width:  380rpx;
+    height: 380rpx;
+    margin-bottom: 40rpx;
+    background-color: #F2F0F2;
+    border-radius: 80rpx;
+}
+.functionsContainer{
+    width: 100%;
+    height: calc(100%*830/1334);
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    border-top-left-radius: 150rpx;
+    border-top-right-radius: 150rpx;
+    background-color: #F2F0F2;
+}
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+  }
+  
+  .userinfo-avatar {
+    overflow: hidden;
+    width: 192rpx;
+    height: 192rpx;
+    margin: 50rpx;
+    border-radius: 50%;
+  }
+  .addLot
+  {
+      margin-top: 25rpx;
+      height: 230rpx;
+      width: 230rpx;
+  }
+  .funcBtn{
+    width: 499rpx;
+    height: 130rpx;
+    margin-top: 70rpx;
+    display: flex;
+    position: relative;
+    /* justify-content: center; */
+    /* 垂直居中 */
+    align-items: center;
+}
+  .btn-img
+  {  
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    left: 30rpx;
+  }
+  .btn-text
+  {
+      font-family: 'PingFangSC';
+      position: absolute;
+      left: 170rpx;
+      font-size: 30rpx;
+      color: #1A38A1;
+  }
+.btn-arrow
+{
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    right: 10rpx;
+}
