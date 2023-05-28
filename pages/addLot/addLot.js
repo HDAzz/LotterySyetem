@@ -37,7 +37,6 @@ Page({
         var tops = [];
         this.data.hasLimitLists.forEach(e => {
             var top = {
-                name: e.price,
                 count: Number(e.num),
                 id: Number(e.id)
             }
@@ -49,19 +48,19 @@ Page({
             num_type: num_type,
             labels: labels,
             tops: tops,
-            secret: String(this.data.secret)
+            secret: (this.data.secret).join('')
         }
         console.log(myData)
-        // wx.request({
-        //   url: 'http://47.98.33.231:10096/lottery',
-        //   header:{
-        //       'Authorization':wx.getStorageSync('access_token'),
-        //   },
-        //   data:myData,
-        //   success(res){
-
-        //   }
-        // })
+        wx.request({
+          url: 'http://47.98.33.231:10096/lottery',
+          header:{
+              'Authorization':wx.getStorageSync('access_token'),
+          },
+          data:myData,
+          success(res){
+                console.log(res);
+          }
+        })
         this.setData({
             isSubmit: true,
         })
