@@ -3,14 +3,14 @@
 </view>
 <view class="formContainer">
     <form class="myform" bindsubmit="formSubmit" bindreset="formReset">
-        <view class="section ">
+        <!-- <view class="section ">
             <view class="section-title">抽签类型：</view>
             <radio-group name="lotteryType">
                 <label>
-                    <radio value="all" checked="" />全部抽完
+                    <radio value="all"  />全部抽完
                 </label>
             </radio-group>
-        </view>
+        </view> -->
 
         <view class="section">
             <view class="section-title">概率类型：</view>
@@ -32,7 +32,7 @@
             <textarea class="circle-border" placeholder="" name="description" placeholder-class="center" />
         </view>
         <text class="tips">如果留空，则对应奖项平分剩余概率</text>
-        <scroll-view class="table" scroll-x="true">
+        <scroll-view class="table" >
             <!-- 表头(即第一行) -->
             <view class="tr">
                 <view class="th_1">奖项</view>
@@ -40,17 +40,17 @@
             </view>
 
             <!-- 表格第四行 -->
-            <view wx:for="{{lists}}" wx:key="{{index}}">
+            <view wx:for="{{lists}}" wx:key="index" wx:for-item="itemName" wx:for-index="indexName">
                 <view class="tr">
-                    <input class="td_1"></input>
-                    <input class="td_2"></input>
+                    <input class="td_1" value="{{itemName.price}}" bindinput="getPrice"></input>
+                    <input class="td_2" value="{{itemName.probability}}" bindinput="getProbability"></input>
                 </view>
             </view>
 
-            <!-- <view class="button_box">
+            <view class="button_box">
                 <button class='button_style' bindtap='add'>添加一行</button>
                 <button class='button_style' bindtap='del'>删除一行</button>
-            </view> -->
+            </view>
         </scroll-view>
 
         
@@ -74,19 +74,18 @@
             </view>
 
             <!-- 表格第四行 -->
-            <view wx:for="{{hasLimitLists}}" wx:key="{{index}}">
+            <view wx:for="{{hasLimitLists}}" wx:key="index">
                 <view class="tr">
                     <input class="td_1"></input>
                     <input class="td_2"></input>
                 </view>
             </view>
 
-            <!-- <view class="button_box">
+            <view class="button_box">
                 <button class='button_style' bindtap='add'>添加一行</button>
                 <button class='button_style' bindtap='del'>删除一行</button>
-            </view> -->
+            </view>
         </scroll-view>
-
-
+        <button form-type="submit">Submit</button>
     </form>
 </view>

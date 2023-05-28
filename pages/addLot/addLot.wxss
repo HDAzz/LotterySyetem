@@ -16,6 +16,7 @@ page{
     border-top-left-radius: 100rpx;
     border-top-right-radius: 100rpx;
     background-color:#F2F0F2;   
+    padding-bottom: 250rpx;
 }
 .circle-border{
     border: 1rpx solid black;
