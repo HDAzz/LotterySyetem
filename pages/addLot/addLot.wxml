@@ -6,14 +6,16 @@
         <form class="myform" bindsubmit="formSubmit" bindreset="formReset">
             <view class="card">
                 <view class="section-title">概率类型：</view>
-                <radio-group name="probabilityType">
+                <checkbox-group name="probabilityType">
                     <label>
-                        <radio value="概率模型" checked />概率模型
+                        <!-- <radio value="概率模型" checked />概率模型 -->
+                        <checkbox value="0"/>概率模型
                     </label>
                     <label>
-                        <radio value="定量模型" />定量模型
+                        <!-- <radio value="定量模型" />定量模型 -->
+                        <checkbox value="1"/>定量模型
                     </label>
-                </radio-group>
+                </checkbox-group>
             </view>
             <view class="card">
                 <view class="section-title">标题:</view>
@@ -51,13 +53,13 @@
             </view>
             <view class="card ">
                 <view class="section-title">奖项是否存在上限</view>
-                <switch name="pricesHaveLimit" />
+                <switch name="pricesHaveLimit" bindchange="limitChange" />
             </view>
             <view class="card">
                 <text class="tips">如果留空，则对应奖项无上限，优先级高于概率设置</text>
             </view>
             <!-- 奖项是否存在上限 -->
-            <view class="card">
+            <view wx:if="{{islimited}}" class="card">
                 <scroll-view class="table">
                     <!-- 表头(即第一行) -->
                     <view class="tr">

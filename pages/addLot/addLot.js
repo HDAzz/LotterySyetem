@@ -4,30 +4,64 @@ Page({
         isSubmit: false,
         lists: [{
             price: '一等奖',
-            probability: '10'
-        }, {
-            price: '',
-            probability: ''
-        }, {
-            price: '',
-            probability: ''
-        }], // 三个空行
-        curRow: 0,
+            probability: '10',
+            id: ''
+        }, {}, {}], // 三个空行
         hasLimitLists: [{
             price: '',
-            num: ''
+            num: '',
+            id: ''
         }, {}, {}],
         secret: [],
+        islimited: false,
     },
     formSubmit: function (e) {
-        console.log('form发生了submit事件，携带数据为：', e.detail.value);
-        console.log(this.data.lists);
+        // console.log('form发生了submit事件，携带数据为：', e.detail.value);
+        //console.log(this.data.lists);
+        //解构赋值表单
         let {
             probabilityType,
             title,
             description,
-            pricesHaveLimit
         } = e.detail.value;
+        var num_type = probabilityType.length == 2 ? 2 : Number(probabilityType[0]);
+        var labels = [];
+        this.data.lists.forEach(e => {
+            var label = {
+                name: e.price,
+                count: Number(e.probability),
+                id: Number(e.id)
+            }
+            labels.push(label);
+        });
+        var tops = [];
+        this.data.hasLimitLists.forEach(e => {
+            var top = {
+                name: e.price,
+                count: Number(e.num),
+                id: Number(e.id)
+            }
+            tops.push(top);
+        });
+        const myData = {
+            title: title,
+            desc: description,
+            num_type: num_type,
+            labels: labels,
+            tops: tops,
+            secret: String(this.data.secret)
+        }
+        console.log(myData)
+        // wx.request({
+        //   url: 'http://47.98.33.231:10096/lottery',
+        //   header:{
+        //       'Authorization':wx.getStorageSync('access_token'),
+        //   },
+        //   data:myData,
+        //   success(res){
+
+        //   }
+        // })
         this.setData({
             isSubmit: true,
         })
@@ -78,6 +112,7 @@ Page({
     },
     getPrice(e) {
         this.data.lists[e.target.id].price = e.detail.value;
+        this.data.lists[e.target.id].id = e.target.id;
         // console.log(this.data.lists)
     },
     getProbability(e) {
@@ -86,6 +121,7 @@ Page({
     },
     getLimitPrice(e) {
         this.data.hasLimitLists[e.target.id].price = e.detail.value;
+        this.data.hasLimitLists[e.target.id].id = e.target.id;
     },
     getLimitNum(e) {
         this.data.hasLimitLists[e.target.id].num = e.detail.value;
@@ -98,4 +134,10 @@ Page({
             secret: arr
         })
     },
+    limitChange(e) {
+        console.log(e.detail.value);
+        this.setData({
+            islimited: e.detail.value,
+        })
+    }
 })
