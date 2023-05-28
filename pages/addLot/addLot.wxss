@@ -1,6 +1,18 @@
 page{
     background-color: #79ACED;
+    width: 100%;
 }
+.card {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: row;
+
+  }
 .titleContainer{
     height: 160rpx;
     display: flex;
@@ -56,7 +68,7 @@ page{
 }
   
 .tr {
-    width: 150%;    /* 15% + 25% + 25% + 85% = 150%*/
+    width: 600rpx;    /* 15% + 25% + 25% + 85% = 150%*/
     display: flex;
     flex-direction: row;
 }
@@ -85,20 +97,13 @@ page{
 }
 
 .th_1, .td_1 {
-    width: 30%;
+    width: 400rpx;
 }
 
 .th_2, .td_2 {
-    width: 30%;
+    width: 200rpx;
 }
 
-.th_3, .td_3 {
-    width: 25%;
-}
-
-.th_4, .td_4 {
-    width: 85%;
-}
 
 .button_box {
     margin-top: 30px;
@@ -106,7 +111,89 @@ page{
 }
 
 .button_style {
-    width: 50%;
+    width: 150rpx;
     color: cornflowerblue;
     background-color: rgb(233, 207, 186);
+    min-width: 50px;
 }
+
+
+/*  */
+view {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.wx-page-content {
+  padding: 40px;
+}
+.wx-page-content .page-title {
+  font-size: 28px;
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.wx-page-content .page-tises {
+  font-size: 16px;
+  color: #000;
+}
+.wx-page-content .page-tises span {
+  color: #ACACAC;
+}
+.verificationCode {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+.verificationCode > input {
+  width: calc(200%);
+  position: absolute;
+  left: -100px;
+  top: 20px;
+  height: 60px;
+  background: #e9e9e9;
+  opacity: 0;
+  font-size: 10px;
+}
+.verificationCode > view {
+  width: 55px;
+  border: 1rpx solid #979797;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 4px;
+  font-size: 30px;
+  color: #4DBF6E;
+}
+.verificationCode .activeView {
+  border-color: #4DBF6E;
+}
+.lodingBtn {
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  background: #88c299;
+  border-radius: 99px;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-size: 16px;
+}
+.trueLoding {
+  background: #4DBF6E;
+}
+.againTime,
+.againTimeBtn {
+  color: #ACACAC;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 15px;
+  text-decoration: underline;
+}
+.againTimeBtn {
+  color: #59ACFF;
+}
+
