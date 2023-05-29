@@ -1,4 +1,6 @@
 // app.js
+
+
 App({
     onLaunch() {
         // 展示本地存储能力
@@ -30,6 +32,10 @@ App({
                     console.log('登录失败！' + res.errMsg)
                 }
             }
+        })
+        wx.connectSocket({
+          url: 'ws://47.98.33.231:13000/wx',
+          protocols:[wx.getStorageSync('access_token')],
         })
     },
     globalData: {

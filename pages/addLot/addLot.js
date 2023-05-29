@@ -52,7 +52,8 @@ Page({
         }
         console.log(myData)
         wx.request({
-          url: 'http://47.98.33.231:10096/lottery',
+          url: 'http://47.98.33.231:10096/lottery', 
+          method:'POST',
           header:{
               'Authorization':wx.getStorageSync('access_token'),
           },

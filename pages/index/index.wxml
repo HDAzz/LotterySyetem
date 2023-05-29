@@ -4,7 +4,7 @@
     <view class="userInfoContainer">
         <view class="userInfoBox">
             <view class="userinfo">
-                <block wx:if="{{canIUseOpenData}}">
+                <!-- <block wx:if="{{canIUseOpenData}}">
                     <view class="userinfo-avatar">
                         <open-data type="userAvatarUrl"></open-data>
                     </view>
@@ -18,7 +18,13 @@
                 <block wx:else>
                     <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
                     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-                </block>
+                </block> -->
+                <view class="userinfo-avatar">
+                    <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+                        <image class="avatar" src="{{avatarUrl}}"></image>
+                    </button>
+                </view>
+
             </view>
         </view>
     </view>
@@ -38,6 +44,8 @@
             <text class="btn-text">抽签模板</text>
             <image class="btn-arrow" src="/images/arrow.svg"></image>
         </button>
-        <view><image src="/images/addLotButton.png" bindtap="addLogBtnTap" class="addLot" mode="heightFix"></image></view>
+        <view>
+            <image src="/images/addLotButton.png" bindtap="addLogBtnTap" class="addLot" mode="heightFix"></image>
+        </view>
     </view>
 </view>

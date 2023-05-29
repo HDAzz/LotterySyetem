@@ -4,7 +4,8 @@
         "pages/addLot/addLot",
         "pages/participation/participation",
         "pages/addTemplate/addTemplate",
-        "pages/myLots/myLots"
+        "pages/myLots/myLots",
+        "pages/getInfo/getInfo"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -14,5 +15,7 @@
     },
     "style": "v2",
     "sitemapLocation": "sitemap.json",
-    "useExtendedLib":{ "weui": true }
+    "useExtendedLib": {
+        "weui": true
+    }
 }
