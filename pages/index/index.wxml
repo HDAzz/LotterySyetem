@@ -19,11 +19,10 @@
                     <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
                     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
                 </block> -->
-                <view class="userinfo-avatar">
-                    <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-                        <image class="avatar" src="{{avatarUrl}}"></image>
-                    </button>
-                </view>
+                    <view class="userinfo-avatar">
+                        <image class="avatar" src="{{avatarUrl}}" alt=""/>
+                    </view>
+                    <text >{{nickname}}</text>
 
             </view>
         </view>

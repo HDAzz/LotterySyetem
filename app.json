@@ -1,11 +1,12 @@
 {
     "pages": [
+        "pages/getInfo/getInfo",
         "pages/index/index",
         "pages/addLot/addLot",
         "pages/participation/participation",
         "pages/addTemplate/addTemplate",
-        "pages/myLots/myLots",
-        "pages/getInfo/getInfo"
+        "pages/myLots/myLots"
+        
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -34,7 +34,7 @@ App({
             }
         })
         wx.connectSocket({
-          url: 'ws://47.98.33.231:13000/wx',
+          url: 'wss://ws.l.ptianya.top/ws',
           protocols:[wx.getStorageSync('access_token')],
         })
     },

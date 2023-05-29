@@ -4,21 +4,55 @@ const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia0
 
 
 Page({
-  data: {
-    avatarUrl: defaultAvatarUrl,
-    theme: wx.getSystemInfoSync().theme,
-  },
-  onLoad() {
-    wx.onThemeChange((result) => {
-      this.setData({
-        theme: result.theme
-      })
-    })
-  },
-  onChooseAvatar(e) {
-    const { avatarUrl } = e.detail 
-    this.setData({
-      avatarUrl,
-    })
-  }
+    data: {
+        avatarUrl: defaultAvatarUrl,
+        theme: wx.getSystemInfoSync().theme,
+        nickname: '',
+    },
+    onLoad() {
+        wx.onThemeChange((result) => {
+            this.setData({
+                theme: result.theme
+            })
+        })
+    },
+    onChooseAvatar(e) {
+        const {
+            avatarUrl
+        } = e.detail
+        this.setData({
+            avatarUrl,
+        })
+        wx.setStorageSync('avatarUrl', this.data.avatarUrl);
+    },
+    onInputNickName(e) {
+        // console.log(e.detail);
+        this.setData({
+            nickname: e.detail.value,
+        })
+        // console.log(this.data.nickname);
+        wx.setStorageSync('nickname', this.data.nickname);
+        // console.log(wx.getStorageSync('nickname'));
+    },
+    onFinishClick() {
+        if (this.data.nickname && this.data.avatarUrl != defaultAvatarUrl) {
+            wx.showToast({
+                title: '填写成功',
+                icon: 'success',
+                duration: 2000,
+            })
+            setTimeout(() => {
+                wx.navigateTo({
+                    url: '../index/index',
+                })
+            }, 500);
+
+        } else {
+            wx.showToast({
+                title: '请填写完整信息',
+                icon: 'error',
+                duration: 2000,
+            })
+        }
+    },
 })
