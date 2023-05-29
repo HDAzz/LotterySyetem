@@ -9,35 +9,44 @@ Page({
         canIUse: wx.canIUse('button. open-type.getUserInfo'),
         canIUseGetUserProfile: false,
         canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'),
-        avatarUrl: wx.getStorageSync('avatarUrl')?wx.getStorageSync('avatarUrl'):defaultAvatarUrl,
-        nickname:wx.getStorageSync('nickname'),
+        avatarUrl: wx.getStorageSync('avatarUrl') ? wx.getStorageSync('avatarUrl') : defaultAvatarUrl,
+        nickname: wx.getStorageSync('nickname'),
         theme: wx.getSystemInfoSync().theme,
+        onaddlotbtn: false,
+        secretInput: false,
+        secret: [],
     },
     onLoad() {
-        // console.log(wx.getStorageSync('nickname'));
+        this.setData({
+            onaddlotbtn: false,
+            secretInput: false,
+        })
         wx.onThemeChange((result) => {
             this.setData({
                 theme: result.theme
             })
         })
-        const myData={
-            username:wx.getStorageSync('nickname')
+        const myData = {
+            username: wx.getStorageSync('nickname')
         }
         wx.request({
-          url: 'http://47.98.33.231:10096/wx/username',
-          header:{
-            Authorization:wx.getStorageSync('access_token')
-          },
-          method:'POST',
-          data:myData,
-          success(res){
-              console.log(res);
-          }
+            url: 'http://47.98.33.231:10096/wx/username',
+            header: {
+                Authorization: wx.getStorageSync('access_token')
+            },
+            method: 'POST',
+            data: myData,
+            success(res) {
+                console.log(res);
+            }
         })
     },
+    onShow() {
+
+    },
     addLogBtnTap() {
-        wx.navigateTo({
-            url: '../addLot/addLot',
+        this.setData({
+            onaddlotbtn: true
         })
     },
     participationBtnTap() {
@@ -53,6 +62,25 @@ Page({
     addTemplateBtnTap() {
         wx.navigateTo({
             url: '../addTemplate/addTemplate',
+        })
+    },
+    createNewLot() {
+        wx.navigateTo({
+            url: '../addLot/addLot',
+        })
+    },
+    participateCurLot() {
+        // console.log(this.data.secretInput);
+        this.setData({
+            secretInput: true,
+        })
+        
+    },
+    inputValue(e) {
+        let value = e.detail.value;
+        let arr = [...value];
+        this.setData({
+            secret: arr
         })
     },
     // onLoad() {

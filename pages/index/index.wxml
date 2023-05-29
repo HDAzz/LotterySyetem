@@ -19,10 +19,10 @@
                     <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
                     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
                 </block> -->
-                    <view class="userinfo-avatar">
-                        <image class="avatar" src="{{avatarUrl}}" alt=""/>
-                    </view>
-                    <text >{{nickname}}</text>
+                <view class="userinfo-avatar">
+                    <image class="avatar" src="{{avatarUrl}}" alt="" />
+                </view>
+                <text>{{nickname}}</text>
 
             </view>
         </view>
@@ -38,13 +38,30 @@
             <text class="btn-text">我创建的抽签</text>
             <image class="btn-arrow" src="/images/arrow.svg"></image>
         </button>
-        <button style="width: 499rpx;" bindtap="addTemplateBtnTap" class="funcBtn">
+        <!-- <button style="width: 499rpx;" bindtap="addTemplateBtnTap" class="funcBtn">
             <image class="btn-img" src="/images/template.svg"></image>
             <text class="btn-text">抽签模板</text>
             <image class="btn-arrow" src="/images/arrow.svg"></image>
-        </button>
-        <view>
+        </button> -->
+        <view wx:if="{{!onaddlotbtn}}">
             <image src="/images/addLotButton.png" bindtap="addLogBtnTap" class="addLot" mode="heightFix"></image>
+        </view>
+        <view wx:else>
+            <view class="choices">
+                <button class="choice" bindtap="createNewLot">创建新的抽签</button>
+                <button class="choice" bindtap="participateCurLot">加入已有抽签</button>
+            </view>
+        </view>
+
+        <view wx:if="{{secretInput}}" class="secret">
+            <text class="secret_text">请输入密令</text>
+            <view class="verificationCode">
+                <input type="number" maxlength="4" bindinput="inputValue" />
+                <view class="{{secret[0] ? 'activeView' : 0}}">{{secret[0]}}</view>
+                <view class="{{secret[1] ? 'activeView' : 0}}">{{secret[1]}}</view>
+                <view class="{{secret[2] ? 'activeView' : 0}}">{{secret[2]}}</view>
+                <view class="{{secret[3] ? 'activeView' : 0}}">{{secret[3]}}</view>
+            </view>
         </view>
     </view>
 </view>

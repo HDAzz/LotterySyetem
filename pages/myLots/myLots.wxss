@@ -1,1 +1,72 @@
 /* pages/myLots/myLots.wxss */
+page{
+    background-color: #79ACED;
+    height: 100%;
+}
+.container{
+    height: 100%;
+    width: 100%;
+}
+.title{
+    height: 25%;
+    width: 100%;
+}
+.content{
+    border-top-left-radius: 100rpx;
+    border-top-right-radius: 100rpx;
+    background-color: #F2F0F2;
+    height: 75%;
+    width: 100%;
+}
+.textbox{
+    background-color: #F2F0F2;
+    margin: auto;
+    margin-top: 80rpx;
+    height: 200rpx;
+    width: 400rpx;
+    border-radius: 40rpx;
+    display: flex;
+    /* text-align: center; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* 父容器更改 */
+}
+.mytext{
+    color: #4A5ECF;
+    font-weight: bold;
+    font-size: 50rpx;
+}
+.funcBtn{
+    width: 499rpx;
+    height: 130rpx;
+    margin-top: 70rpx;
+    display: flex;
+    position: relative;
+    /* justify-content: center; */
+    /* 垂直居中 */
+    align-items: center;
+}
+
+.btn-img
+  {  
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    left: 30rpx;
+  }
+  .btn-text
+  {
+      font-family: 'PingFangSC';
+      position: absolute;
+      left: 170rpx;
+      font-size: 30rpx;
+      color: #1A38A1;
+  }
+.btn-arrow
+{
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    right: 10rpx;
+}

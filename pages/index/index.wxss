@@ -1,16 +1,19 @@
 /**index.wxss**/
-page{
+page {
     height: 100%;
 }
-.container{
-    background-color: #79ACED;  
-    position: relative;  
+
+.container {
+    background-color: #79ACED;
+    position: relative;
 }
-.headerContainer{
+
+.headerContainer {
     width: 100%;
     height: 120rpx;
 }
-.userInfoContainer{
+
+.userInfoContainer {
     /* background-color: #79ACED; */
     width: 100%;
     height: calc(100%*556/1334);
@@ -19,15 +22,16 @@ page{
     align-items: center;
     justify-content: center;
 }
-.userInfoBox
-{
-    width:  380rpx;
+
+.userInfoBox {
+    width: 380rpx;
     height: 380rpx;
     margin-bottom: 40rpx;
     background-color: #F2F0F2;
     border-radius: 80rpx;
 }
-.functionsContainer{
+
+.functionsContainer {
     width: 100%;
     height: calc(100%*830/1334);
     position: absolute;
@@ -47,13 +51,15 @@ page{
     align-items: center;
     justify-content: center;
     color: #aaa;
-  }
-  .avatar {
+}
+
+.avatar {
     display: block;
     width: 140rpx;
     height: 140rpx;
-  }
-  .userinfo-avatar {
+}
+
+.userinfo-avatar {
     /* overflow: hidden;
     width: 192rpx;
     height: 192rpx;
@@ -64,14 +70,15 @@ page{
     border-radius: 8px;
     margin-top: 40px;
     margin-bottom: 40px;
-  }
-  .addLot
-  {
-      margin-top: 25rpx;
-      height: 230rpx;
-      width: 230rpx;
-  }
-  .funcBtn{
+}
+
+.addLot {
+    margin-top: 130rpx;
+    height: 230rpx;
+    width: 230rpx;
+}
+
+.funcBtn {
     width: 499rpx;
     height: 130rpx;
     margin-top: 70rpx;
@@ -81,25 +88,99 @@ page{
     /* 垂直居中 */
     align-items: center;
 }
-  .btn-img
-  {  
+
+.btn-img {
     width: 50rpx;
     height: 50rpx;
     position: absolute;
     left: 30rpx;
-  }
-  .btn-text
-  {
-      font-family: 'PingFangSC';
-      position: absolute;
-      left: 170rpx;
-      font-size: 30rpx;
-      color: #1A38A1;
-  }
-.btn-arrow
-{
+}
+
+.btn-text {
+    font-family: 'PingFangSC';
+    position: absolute;
+    left: 170rpx;
+    font-size: 30rpx;
+    color: #1A38A1;
+}
+
+.btn-arrow {
     width: 40rpx;
     height: 40rpx;
     position: absolute;
     right: 10rpx;
+}
+
+.choices {
+    background-color: #7C96EB;
+    margin-top: 120rpx;
+    height: 200rpx;
+    width: 500rpx;
+    border-radius: 40rpx;
+    padding-top: 15rpx;
+    padding-bottom: 30rpx;
+}
+
+.choice {
+    margin-top: 20rpx;
+    border-radius: 20rpx;
+    background-color: #E4E2E6;
+    color: #273AA3;
+}
+
+.secret {
+    position: absolute;
+    top: 50rpx;
+    border-radius: 40rpx;
+    background-color: #FFF;
+    height: 400rpx;
+    width: 500rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 25rpx;
+    padding-right: 25rpx;
+}
+
+.secret_text {
+    color: #4A5ECF;
+    font-weight: bold;
+    margin-top: 50rpx;
+    font-size: 50rpx;
+    padding-bottom: 30rpx;
+}
+
+.verificationCode {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.verificationCode>input {
+    width: calc(200%);
+    position: absolute;
+    left: -100px;
+    top: 20px;
+    height: 60px;
+    background: #e9e9e9;
+    opacity: 0;
+    font-size: 10px;
+}
+
+.verificationCode>view {
+    width: 100rpx;
+    border: 1rpx solid #979797;
+    height: 100rpx;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 4px;
+    font-size: 30px;
+    color: #4DBF6E;
+}
+
+.verificationCode .activeView {
+    border-color: #4DBF6E;
 }
