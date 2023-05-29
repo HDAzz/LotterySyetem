@@ -145,9 +145,9 @@ page {
 .secret_text {
     color: #4A5ECF;
     font-weight: bold;
-    margin-top: 50rpx;
+    margin-top: 30rpx;
     font-size: 50rpx;
-    padding-bottom: 30rpx;
+    padding-bottom: 10rpx;
 }
 
 .verificationCode {
@@ -156,7 +156,8 @@ page {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding-top: 20px;
+    padding-top: 10px;
+    margin-bottom: 40rpx;
 }
 
 .verificationCode>input {

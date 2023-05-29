@@ -21,7 +21,7 @@ App({
                         },
                         method:'POST',
                         success:(res)=>{
-                            console.log(res);
+                            // console.log(res);
                             const access_token=res.data.data.access_token;
                             wx.removeStorageSync('access_token');
                             wx.setStorageSync('access_token', access_token);
@@ -36,6 +36,10 @@ App({
         wx.connectSocket({
           url: 'wss://ws.l.ptianya.top/ws',
           protocols:[wx.getStorageSync('access_token')],
+        })
+        wx.onSocketMessage((msg) => {
+            console.log(msg.data)
+            wx.setStorageSync('result', msg.data)
         })
     },
     globalData: {

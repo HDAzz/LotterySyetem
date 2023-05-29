@@ -6,16 +6,14 @@
         <form class="myform" bindsubmit="formSubmit" bindreset="formReset">
             <view class="card">
                 <view class="section-title">概率类型：</view>
-                <checkbox-group name="probabilityType">
+                <radio-group name="probabilityType" bindchange="onModelChange">
                     <label>
-                        <!-- <radio value="概率模型" checked />概率模型 -->
-                        <checkbox value="0"/>概率模型
+                        <radio value="概率模型" checked />概率模型
                     </label>
                     <label>
-                        <!-- <radio value="定量模型" />定量模型 -->
-                        <checkbox value="1"/>定量模型
+                        <radio value="定量模型" />定量模型
                     </label>
-                </checkbox-group>
+                </radio-group>
             </view>
             <view class="card">
                 <view class="section-title">标题:</view>
@@ -33,7 +31,7 @@
                     <!-- 表头(即第一行) -->
                     <view class="tr">
                         <view class="th_1">奖项</view>
-                        <view class="th_2">概率%</view>
+                        <view class="th_2">{{tableText}}</view>
                     </view>
 
                     <!-- 表格第四行 -->

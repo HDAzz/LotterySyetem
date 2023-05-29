@@ -6,14 +6,11 @@ Page({
             price: '一等奖',
             probability: '10',
             id: ''
-        }, {}, {}], // 三个空行
-        hasLimitLists: [{
-            price: '',
-            num: '',
-            id: ''
-        }, {}, {}],
+        }], // 三个空行
+        hasLimitLists: [],
         secret: [],
         islimited: false,
+        tableText: '概率%'
     },
     formSubmit: function (e) {
         // console.log('form发生了submit事件，携带数据为：', e.detail.value);
@@ -24,7 +21,17 @@ Page({
             title,
             description,
         } = e.detail.value;
-        var num_type = probabilityType.length == 2 ? 2 : Number(probabilityType[0]);
+        var num_type;
+        switch (probabilityType) {
+            case "概率模型":
+                num_type = this.data.islimited ? 2 : 0;
+                break;
+            case "定量模型":
+                num_type = 1;
+                break;
+            default:
+                break;
+        }
         var labels = [];
         this.data.lists.forEach(e => {
             var label = {
@@ -50,17 +57,30 @@ Page({
             tops: tops,
             secret: (this.data.secret).join('')
         }
+        if (myData.title == '' || myData.labels == [] || myData.secret == []) {
+            wx.showToast({
+                title: '请完整填写表格',
+                icon: 'error',
+                duration: 2000,
+            })
+            return;
+        }
+        wx.showToast({
+            title: '创建成功！',
+            icon: 'success',
+            duration: 2000,
+        })
         console.log(myData)
         wx.request({
-          url: 'http://47.98.33.231:10096/lottery', 
-          method:'POST',
-          header:{
-              'Authorization':wx.getStorageSync('access_token'),
-          },
-          data:myData,
-          success(res){
+            url: 'http://47.98.33.231:10096/lottery',
+            method: 'POST',
+            header: {
+                'Authorization': wx.getStorageSync('access_token'),
+            },
+            data: myData,
+            success(res) {
                 console.log(res);
-          }
+            }
         })
         this.setData({
             isSubmit: true,
@@ -139,5 +159,16 @@ Page({
         this.setData({
             islimited: e.detail.value,
         })
+    },
+    onModelChange(e) {
+        if (e.detail.value == "定量模型")
+            this.setData({
+                tableText: '数量（个）'
+            })
+        else {
+            this.setData({
+                tableText: '概率%'
+            })
+        }
     }
 })

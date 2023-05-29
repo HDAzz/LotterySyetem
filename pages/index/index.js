@@ -4,11 +4,6 @@ const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia0
 const app = getApp()
 Page({
     data: {
-        userInfo: {},
-        hasUserInfo: false,
-        canIUse: wx.canIUse('button. open-type.getUserInfo'),
-        canIUseGetUserProfile: false,
-        canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'),
         avatarUrl: wx.getStorageSync('avatarUrl') ? wx.getStorageSync('avatarUrl') : defaultAvatarUrl,
         nickname: wx.getStorageSync('nickname'),
         theme: wx.getSystemInfoSync().theme,
@@ -17,10 +12,6 @@ Page({
         secret: [],
     },
     onLoad() {
-        this.setData({
-            onaddlotbtn: false,
-            secretInput: false,
-        })
         wx.onThemeChange((result) => {
             this.setData({
                 theme: result.theme
@@ -37,7 +28,7 @@ Page({
             method: 'POST',
             data: myData,
             success(res) {
-                console.log(res);
+                // console.log(res);
             }
         })
     },
@@ -68,13 +59,17 @@ Page({
         wx.navigateTo({
             url: '../addLot/addLot',
         })
+        this.setData({
+            secretInput: false,
+            onaddlotbtn: false,
+        })
     },
     participateCurLot() {
         // console.log(this.data.secretInput);
         this.setData({
             secretInput: true,
         })
-        
+
     },
     inputValue(e) {
         let value = e.detail.value;
@@ -83,24 +78,46 @@ Page({
             secret: arr
         })
     },
-    // onLoad() {
-    //     if (wx.getUserProfile) {
-    //         this.setData({
-    //             canIUseGetUserProfile: true
-    //         })
-    //     }
-    // },
-    // getUserProfile(e) {
-    //     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    //     wx.getUserProfile({
-    //         desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-    //         success: (res) => {
-    //             console.log(res)
-    //             this.setData({
-    //                 userInfo: res.userInfo,
-    //                 hasUserInfo: true
-    //             })
-    //         }
-    //     })
-    // },
+    onClickFuncBackground() {
+        this.setData({
+            secretInput: false,
+            onaddlotbtn: false,
+            secret: [],
+        })
+    },
+    onParticipateBtn() {
+        const _this=this;
+        if (this.data.secret.length < 4) {
+            wx.showToast({
+                title: '请填写完整哦',
+                icon: 'error',
+                duration: 2000,
+            })
+            return;
+        }
+        wx.request({
+            url: 'http://47.98.33.231:10096/lottery/' + this.data.secret.join(''),
+            header: {
+                Authorization: wx.getStorageSync('access_token')
+            },
+            method: 'POST',
+            success(res) {
+                console.log(res);
+                if (res.data.error == 0) {
+                    _this.setData({
+                        secretInput: false,
+                        onaddlotbtn: false,
+                        secret: [],
+                    })
+                } else if (res.data.error == 400) {
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'error',
+                        duration: 2000,
+                    })
+                }
+            }
+        })
+
+    },
 })

@@ -17,6 +17,9 @@ Page({
         })
     },
     onChooseAvatar(e) {
+        if(wx.getStorageSync('avatarUrl')){
+            wx.removeStorageSync('avatarUrl')
+        }
         const {
             avatarUrl
         } = e.detail
@@ -26,13 +29,13 @@ Page({
         wx.setStorageSync('avatarUrl', this.data.avatarUrl);
     },
     onInputNickName(e) {
-        // console.log(e.detail);
+        if(wx.getStorageSync('nickname')){
+            wx.removeStorageSync('nickname')
+        }
         this.setData({
             nickname: e.detail.value,
         })
-        // console.log(this.data.nickname);
         wx.setStorageSync('nickname', this.data.nickname);
-        // console.log(wx.getStorageSync('nickname'));
     },
     onFinishClick() {
         if (this.data.nickname && this.data.avatarUrl != defaultAvatarUrl) {
