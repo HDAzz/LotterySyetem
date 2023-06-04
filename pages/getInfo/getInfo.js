@@ -15,6 +15,11 @@ Page({
                 theme: result.theme
             })
         })
+        if(wx.getStorageSync('avatarUrl'&&wx.getStorageSync('nickname'))){
+            wx.navigateTo({
+              url: '/pages/index/index',
+            })
+        }
     },
     onChooseAvatar(e) {
         if(wx.getStorageSync('avatarUrl')){
@@ -45,7 +50,7 @@ Page({
                 duration: 2000,
             })
             setTimeout(() => {
-                wx.navigateTo({
+                wx.redirectTo({
                     url: '../index/index',
                 })
             }, 500);

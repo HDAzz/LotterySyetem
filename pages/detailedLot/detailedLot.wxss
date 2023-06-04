@@ -1,1 +1,15 @@
 /* pages/detailedLot/detailedLot.wxss */
+Page{
+    background-color: #F2F0F2;
+}
+
+.cell-value{
+    color:red!important;
+}
+/* .group-title{
+    color: red!important;
+    font-size: 500rpx!important;
+} */
+.cell-custom{
+    width: 700rpx!important;
+}

@@ -122,10 +122,11 @@ page {
 }
 
 .choice {
-    margin-top: 20rpx;
-    border-radius: 20rpx;
-    background-color: #E4E2E6;
-    color: #273AA3;
+    margin-top: 20rpx!important;
+    border-radius: 20rpx!important;
+    width: 400rpx!important;
+    background-color: #E4E2E6!important;
+    color: #273AA3!important;
 }
 
 .secret {

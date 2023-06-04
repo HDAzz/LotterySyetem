@@ -196,4 +196,10 @@ view {
 .againTimeBtn {
   color: #59ACFF;
 }
-
+.choice {
+    margin-top: 20rpx!important;
+    width: 200rpx!important;
+    display: flex!important;
+    /* height: 500rpx!important; */
+    margin-left: 55rpx;
+}

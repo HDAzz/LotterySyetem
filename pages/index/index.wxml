@@ -43,8 +43,8 @@
         </view>
         <view wx:else>
             <view class="choices">
-                <button class="choice" bindtap="createNewLot">创建新的抽签</button>
-                <button class="choice" bindtap="participateCurLot">加入已有抽签</button>
+                <van-button custom-class="choice" bindtap="createNewLot" block="{{true}}" type="primary">创建新的抽签</van-button>
+                <van-button custom-class="choice" bindtap="participateCurLot" block="{{true}}" type="primary">加入已有抽签</van-button>
             </view>
         </view>
 
