@@ -1,1 +1,21 @@
 /* pages/myResult/myResult.wxss */
+page{
+    background-color: #79ACED;
+    height: 100%;
+}
+.info{
+    font-size: 80rpx;
+    margin: auto 0;
+}
+.resultbox{
+    
+    margin: auto;
+    margin-top: 10rpx;
+    background-color: lightyellow;
+    font-size: 70rpx;
+    width: 500rpx;
+    height: 600rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

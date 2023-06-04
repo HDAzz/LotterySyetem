@@ -2,11 +2,18 @@
 
 App({
     onLaunch() {
-        // 展示本地存储能力
-        const logs = wx.getStorageSync('logs') || []
-        logs.unshift(Date.now())
-        wx.setStorageSync('logs', logs)
+        // // 展示本地存储能力
+        // const logs = wx.getStorageSync('logs') || []
+        // logs.unshift(Date.now())
+        // wx.setStorageSync('logs', logs)
 
+
+        // //清除本地缓存
+        // wx.clearStorage({
+        //     success(){
+        //         console.log('成功清除本地缓存')
+        //     }
+        // });
         // 登录
         wx.login({
             success: res => {
@@ -37,8 +44,12 @@ App({
           protocols:[wx.getStorageSync('access_token')],
         })
         wx.onSocketMessage((msg) => {
-            console.log(msg.data)
-            wx.setStorageSync('result', msg.data)
+            const result=msg.data.replace(/\"/g,'');
+            console.log(result)
+            wx.setStorageSync('result', result)
+            wx.navigateTo({
+                url: '/pages/myResult/myResult?result='+wx.getStorageSync('result'),
+              })
         })
     },
     globalData: {

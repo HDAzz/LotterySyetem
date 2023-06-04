@@ -1,2 +1,9 @@
 <!--pages/myResult/myResult.wxml-->
-<text>pages/myResult/myResult.wxml</text>
+<view class="container">
+    <view class="info">
+        <text>您的抽奖结果为</text>
+    </view>
+    <view class="resultbox">
+        <text>{{result}}</text>
+    </view>
+</view>

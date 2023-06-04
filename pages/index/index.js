@@ -119,6 +119,7 @@ Page({
                 // wx.navigateTo({
                 //   url: '/pages/detailedLot/detailedLot?id='+res.data.data.id,
                 // })
+
             }
         })
 
