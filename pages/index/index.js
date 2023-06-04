@@ -116,12 +116,7 @@ Page({
                         duration: 2000,
                     })
                 }
-                // wx.navigateTo({
-                //   url: '/pages/detailedLot/detailedLot?id='+res.data.data.id,
-                // })
-
             }
         })
-
     },
 })

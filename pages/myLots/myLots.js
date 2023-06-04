@@ -42,7 +42,7 @@ Page({
         console.log(e.currentTarget.dataset.id);
         var logId=e.currentTarget.dataset.id;
         wx.navigateTo({
-          url: '/pages/detailedLot/detailedLot?id='+logId,
+          url: '/pages/detailedLot/detailedLot?id='+logId+'&role=creator',
         })
     },
 })

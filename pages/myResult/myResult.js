@@ -6,6 +6,6 @@ Page({
     onLoad(options) {
         this.setData({
             result:options.result,
-        })
+        })      
     },
 })

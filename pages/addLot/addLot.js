@@ -85,6 +85,7 @@ Page({
         this.setData({
             isSubmit: true,
         })
+        wx.navigateBack();
     },
     formReset: function () {
         console.log('form发生了reset事件')

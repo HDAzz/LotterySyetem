@@ -1,6 +1,9 @@
 <!--pages/detailedLot/detailedLot.wxml-->
 <view class="container">
-    <view wx:for="{{results}}">
+    <view wx:if="{{role=='creator'}}" wx:for="{{results}}">
         <text>{{item.username}} "{{item.label}}" {{item.time}}</text>
+    </view>
+    <view wx:if="{{role=='participant'}}" wx:for="{{results}}">
+        <text>{{item.Label}} {{item.Time}}</text>
     </view>
 </view>

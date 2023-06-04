@@ -6,4 +6,5 @@
     <view class="resultbox">
         <text>{{result}}</text>
     </view>
+    <!-- <zhuanpan></zhuanpan> -->
 </view>
