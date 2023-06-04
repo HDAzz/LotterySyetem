@@ -13,6 +13,7 @@ Page({
         tableText: '概率%'
     },
     formSubmit: function (e) {
+        const _this=this;
         // console.log('form发生了submit事件，携带数据为：', e.detail.value);
         //console.log(this.data.lists);
         //解构赋值表单
@@ -65,11 +66,7 @@ Page({
             })
             return;
         }
-        wx.showToast({
-            title: '创建成功！',
-            icon: 'success',
-            duration: 2000,
-        })
+       
         console.log(myData)
         wx.request({
             url: 'http://47.98.33.231:10096/lottery',
@@ -80,12 +77,34 @@ Page({
             data: myData,
             success(res) {
                 console.log(res);
+                if(res.data.error==0){
+                    wx.showToast({
+                        title: '创建成功！',
+                        icon: 'success',
+                        duration: 2000,
+                    })
+                    setTimeout(() => {
+                        wx.navigateBack();
+                    }, 1000);
+                }
+                if(res.data.error==500)
+                {
+                    wx.showToast({
+                        title: '口令已存在！',
+                        icon: 'error',
+                        duration: 2000,
+                    })
+                    _this.setData({
+                        secret: [],
+                        isSubmit:false
+                    })
+                }
             }
         })
         this.setData({
             isSubmit: true,
         })
-        wx.navigateBack();
+        
     },
     formReset: function () {
         console.log('form发生了reset事件')

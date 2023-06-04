@@ -6,7 +6,7 @@
             <text class="mytext">我创建的抽签</text>
         </view>
     </view>
-    <view class="content">
+    <scroll-view class="content" scroll-y="true">
         <block wx:for="{{lotList}}" wx:key="id">
             <button bindtap='detailedBtnClick' data-id="{{item.id}}" style="width: 499rpx;"class="funcBtn">
                 <image class="btn-img" src="/images/icon-mylot.svg"></image>
@@ -14,5 +14,5 @@
                 <image class="btn-arrow" src="/images/arrow.svg"></image>
             </button>
         </block>
-    </view>
+    </scroll-view>
 </view>

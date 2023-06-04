@@ -51,6 +51,11 @@ App({
                 url: '/pages/myResult/myResult?result='+wx.getStorageSync('result'),
               })
         })
+        setInterval(() => {
+           wx.sendSocketMessage({
+             data: "",
+           })
+        }, 30*1000);
     },
     globalData: {
         userInfo: null,
