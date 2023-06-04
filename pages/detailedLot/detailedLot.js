@@ -13,7 +13,7 @@ Page({
         var _this = this;
         if (options.role == 'creator') {
             wx.request({
-                url: 'http://47.98.33.231:10096/lottery/' + options.id + '/create/results',
+                url: 'https://lottery.ptianya.top/lottery/' + options.id + '/create/results',
                 method: 'GET',
                 header: {
                     Authorization: wx.getStorageSync('access_token')
@@ -54,7 +54,7 @@ Page({
         }
         if (options.role == 'participant') {
             wx.request({
-                url: 'http://47.98.33.231:10096/lottery/' + options.id + '/join/results',
+                url: 'https://lottery.ptianya.top/lottery/' + options.id + '/join/results',
                 method: 'GET',
                 header: {
                     Authorization: wx.getStorageSync('access_token')

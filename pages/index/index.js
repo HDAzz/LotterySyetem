@@ -21,7 +21,7 @@ Page({
             username: wx.getStorageSync('nickname')
         }
         wx.request({
-            url: 'http://47.98.33.231:10096/wx/username',
+            url: 'https://lottery.ptianya.top/wx/username',
             header: {
                 Authorization: wx.getStorageSync('access_token')
             },
@@ -96,7 +96,7 @@ Page({
             return;
         }
         wx.request({
-            url: 'http://47.98.33.231:10096/lottery/' + this.data.secret.join(''),
+            url: 'https://lottery.ptianya.top/lottery/' + this.data.secret.join(''),
             header: {
                 Authorization: wx.getStorageSync('access_token')
             },

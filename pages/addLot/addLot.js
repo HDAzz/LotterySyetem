@@ -69,7 +69,7 @@ Page({
        
         console.log(myData)
         wx.request({
-            url: 'http://47.98.33.231:10096/lottery',
+            url: 'https://lottery.ptianya.top/lottery',
             method: 'POST',
             header: {
                 'Authorization': wx.getStorageSync('access_token'),
@@ -88,6 +88,7 @@ Page({
                     }, 1000);
                 }
                 if(res.data.error==500)
+
                 {
                     wx.showToast({
                         title: '口令已存在！',

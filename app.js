@@ -21,7 +21,7 @@ App({
                 if (res.code) {
                     //发起网络请求
                     wx.request({
-                        url: 'http://47.98.33.231:10096/wx/code',
+                        url: 'https://lottery.ptianya.top/wx/code',
                         data: {
                             "wx_code": res.code
                         },

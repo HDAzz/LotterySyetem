@@ -6,7 +6,7 @@ Page({
     onLoad() {
         const _this = this;
         wx.request({
-            url: 'http://47.98.33.231:10096/lottery/join',
+            url: 'https://lottery.ptianya.top/lottery/join',
             method: 'GET',
             header: {
                 Authorization: wx.getStorageSync('access_token')
