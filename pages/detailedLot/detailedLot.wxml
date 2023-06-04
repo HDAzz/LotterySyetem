@@ -1,6 +1,6 @@
 <!--pages/detailedLot/detailedLot.wxml-->
 <view class="container">
     <view wx:for="{{results}}">
-        <text>{{item.username}}的抽奖结果是"{{item.label}}"</text>
+        <text>{{item.username}} "{{item.label}}" {{item.time}}</text>
     </view>
 </view>

@@ -6,7 +6,8 @@
         "pages/participation/participation",
         "pages/addTemplate/addTemplate",
         "pages/myLots/myLots",
-        "pages/detailedLot/detailedLot"
+        "pages/detailedLot/detailedLot",
+        "pages/myResult/myResult"
     ],
     "window": {
         "backgroundTextStyle": "light",

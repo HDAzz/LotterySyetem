@@ -1,3 +1,5 @@
+const { timestampToTime } = require("../../utils/util");
+
 Page({
 
     data: {
@@ -29,11 +31,13 @@ Page({
                 res.data.data.forEach(e => {
                     var {
                         username,
-                        label
+                        label,
+                        time
                     } = e;
                     var obj = {
                         username: username,
                         label: label,
+                        time:timestampToTime(time),
                     }
                     tmpResults.push(obj);
                 });
