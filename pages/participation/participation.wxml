@@ -6,11 +6,13 @@
             <text class="mytext">我参与的抽签</text>
         </view>
     </view>
-    <view wx:for="{{mylots}}" wx:key="id" class="content">
-        <button bindtap="onLotClick" data-id="{{item.id}}" style="width: 499rpx;" class="funcBtn">
+    <view class="content">
+        <block wx:for="{{mylots}}" wx:key="id" >
+            <button bindtap="onLotClick" data-id="{{item.id}}" style="width: 499rpx;" class="funcBtn">
             <image class="btn-img" src="/images/icon_participation.svg"></image>
             <text class="btn-text">{{item.title}}</text>
             <image class="btn-arrow" src="/images/arrow.svg"></image>
         </button>
+        </block>
     </view>
 </view>
