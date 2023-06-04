@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "weui-miniprogram": "^1.2.7"
+    "@vant/weapp": "^1.10.19"
   }
 }

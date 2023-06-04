@@ -15,9 +15,12 @@
         "navigationBarTitleText": "",
         "navigationBarTextStyle": "black"
     },
-    "style": "v2",
     "sitemapLocation": "sitemap.json",
     "useExtendedLib": {
         "weui": true
+    },
+    "usingComponents": {
+        "van-button": "@vant/weapp/button/index",
+        "van-icon": "@vant/weapp/icon/index"
     }
 }

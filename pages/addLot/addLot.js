@@ -58,7 +58,17 @@ Page({
             tops: tops,
             secret: (this.data.secret).join('')
         }
+        myData.labels.forEach(e => {
+            if(!(e.name!=''&&e.count!=0)){
+                wx.showToast({
+                    title: '请完整填写表格',
+                    icon: 'error',
+                    duration: 2000,
+                })
+            }
+        });
         if (myData.title == '' || myData.labels == [] || myData.secret == []) {
+            
             wx.showToast({
                 title: '请完整填写表格',
                 icon: 'error',

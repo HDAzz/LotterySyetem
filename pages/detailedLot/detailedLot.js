@@ -67,13 +67,15 @@ Page({
                             LotteryID,
                             UserID,
                             Label,
-                            Time
+                            Time,
+                            Creator
                         } = e;
                         var obj = {
                             LotteryID: LotteryID,
                             UserID: UserID,
                             Label:Label,
                             Time: timestampToTime(Time),
+                            Creator:Creator
                         }
                         list.push(obj);
                     });

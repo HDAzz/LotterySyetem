@@ -4,6 +4,6 @@
         <text>{{item.username}} "{{item.label}}" {{item.time}}</text>
     </view>
     <view wx:if="{{role=='participant'}}" wx:for="{{results}}">
-        <text>{{item.Label}} {{item.Time}}</text>
+        <text>{{item.Label}} {{item.Time}} {{item.Creator}}</text>
     </view>
 </view>

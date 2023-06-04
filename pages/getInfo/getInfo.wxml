@@ -9,5 +9,6 @@
       </mp-cell>
     </mp-cells>
   </mp-form>
-  <button type="primary" style="margin-top: 70rpx;" bindtap="onFinishClick">完成</button>
+  <!-- <button type="primary" style="margin-top: 70rpx;" bindtap="onFinishClick">完成</button> -->
+  <van-button size="large" type="info" style="margin-top: 70rpx; display: flex;" bindtap="onFinishClick">完成</van-button>
 </view>

@@ -7,12 +7,15 @@
         </view>
     </view>
     <scroll-view class="content" scroll-y="true">
-        <block wx:for="{{lotList}}" wx:key="id">
-            <button bindtap='detailedBtnClick' data-id="{{item.id}}" style="width: 499rpx;"class="funcBtn">
+        <view wx:for="{{lotList}}" wx:key="id" style="position: relative;">
+            <button  bindtap='detailedBtnClick' data-id="{{item.id}}" style="width: 499rpx;"class="funcBtn">
                 <image class="btn-img" src="/images/icon-mylot.svg"></image>
-                <text  class="btn-text">{{item.title}}</text>
-                <image class="btn-arrow" src="/images/arrow.svg"></image>
+                <text class="btn-text">{{item.title}} </text>
+                <text style="position: absolute; right: 60rpx; font-size: 20rpx;">密令:{{item.secret}}</text>
+                <!-- <image class="btn-arrow" src="/images/arrow.svg"></image> -->
+                <van-icon class="btn-arrow" name="arrow" />
             </button>
-        </block>
+            <van-icon bindtap="onDeleteIcon" data-id="{{item.id}}" name="delete" size="80rpx" color="#79ACED" style="position: absolute; right: 40rpx;top: 30rpx;" />
+        </view>
     </scroll-view>
 </view>
