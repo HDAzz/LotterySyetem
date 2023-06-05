@@ -86,7 +86,7 @@ Page({
         })
     },
     onParticipateBtn() {
-        const _this=this;
+        const _this = this;
         if (this.data.secret.length < 4) {
             wx.showToast({
                 title: '请填写完整哦',
@@ -95,27 +95,75 @@ Page({
             })
             return;
         }
-        wx.request({
-            url: 'https://lottery.ptianya.top/lottery/' + this.data.secret.join(''),
-            header: {
-                Authorization: wx.getStorageSync('access_token')
+        wx.sendSocketMessage({
+            data: '',
+            success() {
+                wx.request({
+                    url: 'https://lottery.ptianya.top/lottery/' + _this.data.secret.join(''),
+                    header: {
+                        Authorization: wx.getStorageSync('access_token')
+                    },
+                    method: 'POST',
+                    success(res) {
+                        console.log(res);
+                        if (res.data.error == 0) {
+                            _this.setData({
+                                secretInput: false,
+                                onaddlotbtn: false,
+                                secret: [],
+                            })
+                            wx.request({
+                              url: 'https://lottery.ptianya.top/lottery/'+res.data.data+'/info',
+                              method:'GET',
+                              success(res){
+                                  wx.setStorageSync('desc', res.data.data.desc);
+                              }
+                            })
+                        } else if (res.data.error == 400) {
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'error',
+                                duration: 2000,
+                            })
+                        }
+                    }
+                })
             },
-            method: 'POST',
-            success(res) {
-                console.log(res);
-                if (res.data.error == 0) {
-                    _this.setData({
-                        secretInput: false,
-                        onaddlotbtn: false,
-                        secret: [],
-                    })
-                } else if (res.data.error == 400) {
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'error',
-                        duration: 2000,
-                    })
-                }
+            fail() {
+                wx.connectSocket({
+                    url: 'wss://ws.l.ptianya.top/ws',
+                    protocols: [wx.getStorageSync('access_token')],
+                })
+                wx.request({
+                    url: 'https://lottery.ptianya.top/lottery/' + _this.data.secret.join(''),
+                    header: {
+                        Authorization: wx.getStorageSync('access_token')
+                    },
+                    method: 'POST',
+                    success(res) {
+                        console.log(res);
+                        if (res.data.error == 0) {
+                            _this.setData({
+                                secretInput: false,
+                                onaddlotbtn: false,
+                                secret: [],
+                            })
+                            wx.request({
+                                url: 'https://lottery.ptianya.top/lottery/'+res.data.data+'/info',
+                                method:'GET',
+                                success(res){
+                                    wx.setStorageSync('desc', res.data.data.desc);
+                                }
+                              })
+                        } else if (res.data.error == 400) {
+                            wx.showToast({
+                                title: res.data.msg,
+                                icon: 'error',
+                                duration: 2000,
+                            })
+                        }
+                    }
+                })
             }
         })
     },

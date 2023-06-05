@@ -14,7 +14,18 @@ page{
     background-color: lightyellow;
     font-size: 70rpx;
     width: 500rpx;
-    height: 600rpx;
+    height: 300rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.descbox{
+    margin: auto;
+    margin-top: 10rpx;
+    background-color: lightyellow;
+    font-size: 30rpx;
+    width: 500rpx;
+    /* height: 300rpx; */
     display: flex;
     align-items: center;
     justify-content: center;

@@ -6,5 +6,8 @@
     <view class="resultbox">
         <text>{{result}}</text>
     </view>
+    <view class="descbox">
+        <text>{{desc}}</text>
+    </view>
     <!-- <zhuanpan></zhuanpan> -->
 </view>

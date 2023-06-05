@@ -1,6 +1,15 @@
 // app.js
 
 App({
+    onShow(){
+        wx.connectSocket({
+            url: 'wss://ws.l.ptianya.top/ws',
+            protocols:[wx.getStorageSync('access_token')],
+          })
+    },
+    onHide(){
+        wx.closeSocket();
+    },
     onLaunch() {
         // 登录
         wx.login({
@@ -28,9 +37,9 @@ App({
             }
         })
         wx.connectSocket({
-          url: 'wss://ws.l.ptianya.top/ws',
-          protocols:[wx.getStorageSync('access_token')],
-        })
+            url: 'wss://ws.l.ptianya.top/ws',
+            protocols:[wx.getStorageSync('access_token')],
+          })
         wx.onSocketMessage((msg) => {
             const result=msg.data.replace(/\"/g,'');
             console.log(result)
