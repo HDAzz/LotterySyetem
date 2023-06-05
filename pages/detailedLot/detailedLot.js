@@ -2,54 +2,7 @@ const {
     timestampToTime
 } = require("../../utils/util");
 import * as echarts from "../../components/echarts/echarts.min";
-
-function initChart(canvas, width, height, dpr) {
-    const chart = echarts.init(canvas, null, {
-        width: width,
-        height: height,
-        devicePixelRatio: dpr
-    });
-    canvas.setChart(chart);
-
-    var option = {
-        backgroundColor: 'rgba(255,255,255,0.8)',
-        tooltip: {
-            trigger: 'item'
-        },
-        legend: { //显示图例
-            show: true,
-            top: '5%',
-            left: 'center'
-        },
-        series: [{
-            label: {
-                normal: {
-                    fontSize: 14
-                }
-            },
-
-            type: 'pie',
-            center: ['50%', '60%'], //位置
-            radius: ['20%', '30%'], //圈大小
-
-            data: [{ //每一项
-                value: 3,
-                name: '数字农业 3个'
-            }, {
-                value: 2,
-                name: '体育产业 2个'
-            }, {
-                value: 7,
-                name: '乡村新业态 7个'
-            }, {
-                value: 3,
-                name: '其他产业 3个'
-            }]
-        }]
-    };
-    chart.setOption(option);
-    return chart;
-}
+var echart_data=[];
 Page({
 
     data: {
@@ -57,12 +10,32 @@ Page({
         role: '',
         ec: {
             onInit: initChart,
-        }
+        },
+        remain:[]
     },
     onLoad(options) {
         console.log(options.id);
         var _this = this;
         if (options.role == 'creator') {
+         wx.request({
+              url: 'https://lottery.ptianya.top/lottery/'+options.id+'/join/results/labels',
+              method:"GET",
+              header:{
+                Authorization:wx.getStorageSync('access_token'),
+              },
+              success(res){
+                  console.log(res.data);
+                  echart_data=res.data.data
+                  echart_data.forEach(e => {
+                      e.name=e.name+" "+e.value+"个";
+                  });
+                  _this.setData({
+                      remain:res.data.remain.sort((a,b)=>{
+                          return b.name-a.name;
+                      })
+                  })
+              }
+            })
             wx.request({
                 url: 'https://lottery.ptianya.top/lottery/' + options.id + '/create/results',
                 method: 'GET',
@@ -139,3 +112,42 @@ Page({
         }
     },
 })
+
+function initChart(canvas, width, height, dpr) {
+    const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height,
+        devicePixelRatio: dpr
+    });
+    canvas.setChart(chart);
+    var option = {
+        backgroundColor: 'rgba(255,255,255,0.8)',
+        title:{
+            text:"抽奖分布",
+            left:'center',
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: { //显示图例
+            show: true,
+            top: '5%',
+            left: 'left',
+            orient:'vertical'
+        },
+        series: [{
+            label: {
+                normal: {
+                    fontSize: 14
+                }
+            },
+            fontSize:'12',
+            type: 'pie',
+            center: ['55%', '60%'], //位置
+            radius: ['20%', '30%'], //圈大小
+            data:echart_data,
+        }]
+    };
+    chart.setOption(option);
+    return chart;
+}

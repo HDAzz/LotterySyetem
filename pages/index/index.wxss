@@ -51,12 +51,15 @@ page {
     align-items: center;
     justify-content: center;
     color: #aaa;
+    font-size: 40rpx;
+    /* background-color: red; */
 }
 
 .avatar {
     display: block;
-    width: 140rpx;
-    height: 140rpx;
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 100rpx;
 }
 
 .userinfo-avatar {
@@ -65,11 +68,13 @@ page {
     height: 192rpx;
     margin: 50rpx;
     border-radius: 50%; */
+    display: flex;
     padding: 0;
-    width: 56px !important;
+    /* width: 56px !important;
+     */
     border-radius: 8px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 80rpx;
+    margin-bottom: 20rpx;
 }
 
 .addLot {

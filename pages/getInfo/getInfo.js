@@ -20,23 +20,20 @@ Page({
               url: '/pages/index/index',
             })
         }
+        if(wx.getStorageSync('avatarUrl')==defaultAvatarUrl){
+            this.onChooseAvatar();
+        }
     },
     onChooseAvatar(e) {
-        if(wx.getStorageSync('avatarUrl')){
-            wx.removeStorageSync('avatarUrl')
-        }
         const {
             avatarUrl
         } = e.detail
         this.setData({
-            avatarUrl,
+            avatarUrl:avatarUrl,
         })
         wx.setStorageSync('avatarUrl', this.data.avatarUrl);
     },
     onInputNickName(e) {
-        if(wx.getStorageSync('nickname')){
-            wx.removeStorageSync('nickname')
-        }
         this.setData({
             nickname: e.detail.value,
         })
