@@ -14,8 +14,6 @@ Page({
     },
     formSubmit: function (e) {
         const _this=this;
-        // console.log('form发生了submit事件，携带数据为：', e.detail.value);
-        //console.log(this.data.lists);
         //解构赋值表单
         let {
             probabilityType,
@@ -65,6 +63,7 @@ Page({
                     icon: 'error',
                     duration: 2000,
                 })
+                return;
             }
         });
         if (myData.title == '' || myData.labels == [] || myData.secret == []) {

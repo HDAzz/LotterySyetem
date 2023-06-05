@@ -1,14 +1,20 @@
 <!--pages/detailedLot/detailedLot.wxml-->
 <view class="container">
-    <view wx:if="{{role=='creator'}}" wx:for="{{results}}">
+    <view class="s-container" wx:if="{{role=='creator'}}" wx:for="{{results}}">
+        <view class="ec-father-container" >
+            <view class="ec-container">
+                <ec-canvas canvas-id="echart-pie" ec="{{ec}}"></ec-canvas>
+            </view>
+        </view>
         <van-cell-group custom-class="group-title" inset title="{{item.time}}">
-            <van-cell  border="{{true}}" title="{{item.username}}" value="{{item.label}}" lable="{{item.label}}" size="large" value-class="cell-value" custom-class="cell-custom" />
+            <van-cell border="{{true}}" title="{{item.username}}" value="{{item.label}}" lable="{{item.label}}" size="large" value-class="cell-value" custom-class="cell-custom" />
         </van-cell-group>
     </view>
-    <view wx:if="{{role=='participant'}}" wx:for="{{results}}">
+    <view class="s-container" wx:if="{{role=='participant'}}" wx:for="{{results}}">
         <van-cell-group custom-class="group-title" inset title="{{'创建者：'+item.Creator}}">
-            <van-cell  border="{{true}}" title="{{item.Time}}" value="{{item.Label}}" lable="{{item.label}}" size="large" value-class="cell-value" custom-class="cell-custom" />
+            <van-cell border="{{true}}" title="{{item.Time}}" value="{{item.Label}}" lable="{{item.label}}" size="large" value-class="cell-value" custom-class="cell-custom" />
         </van-cell-group>
+
     </view>
 
 

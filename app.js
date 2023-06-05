@@ -2,18 +2,6 @@
 
 App({
     onLaunch() {
-        // // 展示本地存储能力
-        // const logs = wx.getStorageSync('logs') || []
-        // logs.unshift(Date.now())
-        // wx.setStorageSync('logs', logs)
-
-
-        // //清除本地缓存
-        // wx.clearStorage({
-        //     success(){
-        //         console.log('成功清除本地缓存')
-        //     }
-        // });
         // 登录
         wx.login({
             success: res => {

@@ -11,11 +11,12 @@
             <button  bindtap='detailedBtnClick' data-id="{{item.id}}" style="width: 499rpx;"class="funcBtn">
                 <image class="btn-img" src="/images/icon-mylot.svg"></image>
                 <text class="btn-text">{{item.title}} </text>
-                <text style="position: absolute; right: 60rpx; font-size: 20rpx;">密令:{{item.secret}}</text>
+                <text style="position: absolute;top: 5rpx; right: 10rpx; font-size: 20rpx;">密令:{{item.secret}}</text>
                 <!-- <image class="btn-arrow" src="/images/arrow.svg"></image> -->
                 <van-icon class="btn-arrow" name="arrow" />
             </button>
             <van-icon bindtap="onDeleteIcon" data-id="{{item.id}}" name="delete" size="80rpx" color="#79ACED" style="position: absolute; right: 40rpx;top: 30rpx;" />
+            <van-dialog id="van-dialog" />
         </view>
     </scroll-view>
 </view>

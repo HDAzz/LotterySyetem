@@ -15,7 +15,7 @@ Page({
                 theme: result.theme
             })
         })
-        if(wx.getStorageSync('avatarUrl'&&wx.getStorageSync('nickname'))){
+        if(wx.getStorageSync('avatarUrl')&&wx.getStorageSync('nickname')){
             wx.navigateTo({
               url: '/pages/index/index',
             })

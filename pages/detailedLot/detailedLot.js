@@ -1,12 +1,63 @@
 const {
     timestampToTime
 } = require("../../utils/util");
+import * as echarts from "../../components/echarts/echarts.min";
 
+function initChart(canvas, width, height, dpr) {
+    const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height,
+        devicePixelRatio: dpr
+    });
+    canvas.setChart(chart);
+
+    var option = {
+        backgroundColor: 'rgba(255,255,255,0.8)',
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: { //显示图例
+            show: true,
+            top: '5%',
+            left: 'center'
+        },
+        series: [{
+            label: {
+                normal: {
+                    fontSize: 14
+                }
+            },
+
+            type: 'pie',
+            center: ['50%', '60%'], //位置
+            radius: ['20%', '30%'], //圈大小
+
+            data: [{ //每一项
+                value: 3,
+                name: '数字农业 3个'
+            }, {
+                value: 2,
+                name: '体育产业 2个'
+            }, {
+                value: 7,
+                name: '乡村新业态 7个'
+            }, {
+                value: 3,
+                name: '其他产业 3个'
+            }]
+        }]
+    };
+    chart.setOption(option);
+    return chart;
+}
 Page({
 
     data: {
         results: [],
         role: '',
+        ec: {
+            onInit: initChart,
+        }
     },
     onLoad(options) {
         console.log(options.id);
@@ -73,9 +124,9 @@ Page({
                         var obj = {
                             LotteryID: LotteryID,
                             UserID: UserID,
-                            Label:Label,
+                            Label: Label,
                             Time: timestampToTime(Time),
-                            Creator:Creator
+                            Creator: Creator
                         }
                         list.push(obj);
                     });
