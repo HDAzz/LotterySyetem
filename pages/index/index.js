@@ -4,19 +4,23 @@ const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia0
 const app = getApp()
 Page({
     data: {
-        avatarUrl: wx.getStorageSync('avatarUrl') ? wx.getStorageSync('avatarUrl') : defaultAvatarUrl,
-        nickname: wx.getStorageSync('nickname'),
-        theme: wx.getSystemInfoSync().theme,
         onaddlotbtn: false,
         secretInput: false,
         secret: [],
+        avatarUrl: defaultAvatarUrl,
+        nickname: '',
+        hasUserInfo: false,
     },
-    onLoad() {
-        wx.onThemeChange((result) => {
+    onLoad(options) {
+        if(wx.getStorageSync('avatarUrl')&&wx.getStorageSync('nickname'))
+        {
+            
             this.setData({
-                theme: result.theme
+                hasUserInfo:true,
+                avatarUrl:wx.getStorageSync('avatarUrl'),
+                nickname:wx.getStorageSync('nickname')
             })
-        })
+        }
         const myData = {
             username: wx.getStorageSync('nickname')
         }
@@ -33,7 +37,7 @@ Page({
         })
     },
     onShow() {
-
+        wx.hideHomeButton();
     },
     addLogBtnTap() {
         this.setData({
@@ -113,11 +117,11 @@ Page({
                                 secret: [],
                             })
                             wx.request({
-                              url: 'https://lottery.ptianya.top/lottery/'+res.data.data+'/info',
-                              method:'GET',
-                              success(res){
-                                  wx.setStorageSync('desc', res.data.data.desc);
-                              }
+                                url: 'https://lottery.ptianya.top/lottery/' + res.data.data + '/info',
+                                method: 'GET',
+                                success(res) {
+                                    wx.setStorageSync('desc', res.data.data.desc);
+                                }
                             })
                         } else if (res.data.error == 400) {
                             wx.showToast({
@@ -149,12 +153,12 @@ Page({
                                 secret: [],
                             })
                             wx.request({
-                                url: 'https://lottery.ptianya.top/lottery/'+res.data.data+'/info',
-                                method:'GET',
-                                success(res){
+                                url: 'https://lottery.ptianya.top/lottery/' + res.data.data + '/info',
+                                method: 'GET',
+                                success(res) {
                                     wx.setStorageSync('desc', res.data.data.desc);
                                 }
-                              })
+                            })
                         } else if (res.data.error == 400) {
                             wx.showToast({
                                 title: res.data.msg,
@@ -166,5 +170,39 @@ Page({
                 })
             }
         })
+    },
+    onChooseAvatar(e) {
+        const {
+            avatarUrl
+        } = e.detail
+        this.setData({
+            avatarUrl: avatarUrl,
+        })
+        wx.setStorageSync('avatarUrl', this.data.avatarUrl);
+    },
+    onInputNickName(e) {
+        this.setData({
+            nickname: e.detail.value,
+        })
+        wx.setStorageSync('nickname', this.data.nickname);
+    },
+    onFinishClick() {
+        if (this.data.nickname!='' && this.data.avatarUrl != '') {
+            wx.showToast({
+                title: '填写成功',
+                icon: 'success',
+                duration: 1000,
+            })
+            this.setData({
+                hasUserInfo:true,
+            })
+        } else {
+            wx.showToast({
+                title: '请填写完整信息',
+                icon: 'error',
+                duration: 1000,
+            })
+        }
+        
     },
 })

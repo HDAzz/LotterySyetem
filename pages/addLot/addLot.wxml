@@ -51,7 +51,7 @@
             </view>
             <view class="card ">
                 <view class="section-title">奖项是否存在上限</view>
-                <switch name="pricesHaveLimit" bindchange="limitChange" />
+                <switch style="margin-left: 50rpx;" name="pricesHaveLimit" bindchange="limitChange" />
             </view>
             <view class="card">
                 <text class="tips">如果留空，则对应奖项无上限，优先级高于概率设置</text>

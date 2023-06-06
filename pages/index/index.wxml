@@ -4,21 +4,6 @@
     <view class="userInfoContainer" bindtap="onClickFuncBackground">
         <view class="userInfoBox">
             <view class="userinfo">
-                <!-- <block wx:if="{{canIUseOpenData}}">
-                    <view class="userinfo-avatar">
-                        <open-data type="userAvatarUrl"></open-data>
-                    </view>
-                    <open-data type="userNickName"></open-data>
-                </block>
-                <block wx:elif="{{!hasUserInfo}}">
-                    <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-                    <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-                    <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-                </block>
-                <block wx:else>
-                    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-                    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-                </block> -->
                 <view class="userinfo-avatar">
                     <image class="avatar" src="{{avatarUrl}}" alt="" />
                 </view>
@@ -58,6 +43,21 @@
                 <view class="{{secret[3] ? 'activeView' : 0}}">{{secret[3]}}</view>
             </view>
             <button type="primary" bindtap="onParticipateBtn">参与抽签</button>
+        </view>
+    </view>
+    <view wx:if="{{!hasUserInfo}}" class="getInfoBox">
+        <view class="getInfoContainer">
+            <image class="lotSys" src="/images/lotterySystem.png" />
+            <text class="getInfoText">邀请您补全个人信息（昵称、头像）</text>
+            <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+                <image class="avatar" src="{{avatarUrl}}"></image>
+            </button>
+            <view class="weui-input">
+                <input bindblur="onInputNickName" type="nickname" placeholder="请输入昵称" />
+            </view>
+            <view class="finishContainer">
+                <van-button size="normal" type="info" style="margin-top: 70rpx; display: flex;" bindtap="onFinishClick">完成</van-button>
+            </view>
         </view>
     </view>
 </view>

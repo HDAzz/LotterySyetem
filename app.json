@@ -1,6 +1,5 @@
 {
     "pages": [
-        "pages/getInfo/getInfo",
         "pages/index/index",
         "pages/addLot/addLot",
         "pages/participation/participation",
