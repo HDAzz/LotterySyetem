@@ -59,8 +59,10 @@ page{
   {
       font-family: 'PingFangSC';
       position: absolute;
-      left: 170rpx;
-      font-size: 30rpx;
+      left: 100rpx;
+      overflow: hidden;
+      font-size: 25rpx;
+      font-weight: bold;
       color: #1A38A1;
   }
 .btn-arrow

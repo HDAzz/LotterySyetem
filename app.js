@@ -55,7 +55,7 @@ App({
         }, 30*1000);
     },
     globalData: {
-        userInfo: null,
         access_token: '',
+        desc:''
     },
 })

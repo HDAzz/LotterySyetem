@@ -1,4 +1,5 @@
 // pages/myResult/myResult.js
+const app=getApp();
 Page({
     data: {
         result:'',
@@ -7,7 +8,8 @@ Page({
     onLoad(options) {
         this.setData({
             result:options.result,
-            desc:wx.getStorageSync('desc')
+            desc:app.globalData.desc,
         })      
+        console.log(app.globalData.desc)
     },
 })

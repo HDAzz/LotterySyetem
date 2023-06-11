@@ -1,7 +1,7 @@
 // index.js
 // 获取应用实例
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
-const app = getApp()
+var app = getApp()
 Page({
     data: {
         onaddlotbtn: false,
@@ -120,7 +120,8 @@ Page({
                                 url: 'https://lottery.ptianya.top/lottery/' + res.data.data + '/info',
                                 method: 'GET',
                                 success(res) {
-                                    wx.setStorageSync('desc', res.data.data.desc);
+                                    app.globalData.desc=res.data.data.desc;
+                                    // wx.setStorageSync('desc', res.data.data.desc);
                                 }
                             })
                         } else if (res.data.error == 400) {
@@ -156,7 +157,8 @@ Page({
                                 url: 'https://lottery.ptianya.top/lottery/' + res.data.data + '/info',
                                 method: 'GET',
                                 success(res) {
-                                    wx.setStorageSync('desc', res.data.data.desc);
+                                    app.globalData.desc=res.data.data.desc;
+                                    // wx.setStorageSync('desc', res.data.data.desc);
                                 }
                             })
                         } else if (res.data.error == 400) {

@@ -3,7 +3,6 @@
         "pages/index/index",
         "pages/addLot/addLot",
         "pages/participation/participation",
-        "pages/addTemplate/addTemplate",
         "pages/myLots/myLots",
         "pages/detailedLot/detailedLot",
         "pages/myResult/myResult"
