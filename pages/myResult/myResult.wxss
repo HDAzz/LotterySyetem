@@ -1,6 +1,8 @@
 /* pages/myResult/myResult.wxss */
 page{
-    background-color: #79ACED;
+    /* background-color: #79ACED; */
+    /* background: linear-gradient(rgb(78, 78, 214), pink); */
+    background: radial-gradient(rgb(58, 193, 211), rgb(81, 138, 245));
     height: 100%;
 }
 .info{
@@ -8,7 +10,7 @@ page{
     margin: auto 0;
 }
 .resultbox{
-    
+    border-radius: 50rpx;
     margin: auto;
     margin-top: 10rpx;
     background-color: lightyellow;
@@ -18,8 +20,16 @@ page{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family:Arial, Helvetica, sans-serif;
 }
 .descbox{
+    width: 400rpx;
+    /* padding-top: 20rpx; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.desccontainer{
     margin: auto;
     margin-top: 10rpx;
     background-color: lightyellow;
@@ -29,4 +39,5 @@ page{
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50rpx;
 }

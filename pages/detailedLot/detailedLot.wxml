@@ -6,21 +6,29 @@
                 <ec-canvas canvas-id="echart-pie" ec="{{ec}}"></ec-canvas>
             </view>
         </view>
+        <view wx:if="{{desc}}">
+            <van-cell-group title="抽签说明：">
+                <van-cell title="{{desc}}"></van-cell>
+            </van-cell-group>
+        </view>
         <van-cell-group title="奖项剩余情况：">
             <block wx:for="{{remain}}">
                 <van-cell title="{{item.name}}" value="{{item.value==-1?'INFINITY':item.value}}" />
             </block>
         </van-cell-group>
+        
         <block wx:for="{{results}}">
             <van-cell-group custom-class="group-title" inset title="{{item.time}}">
                 <van-cell border="{{true}}" title="{{item.username}}" value="{{item.label}}" lable="{{item.label}}" size="large" value-class="cell-value" custom-class="cell-custom" />
             </van-cell-group>
         </block>
     </view>
-    <view class="s-container" wx:if="{{role=='participant'}}" wx:for="{{results}}">
-        <van-cell-group custom-class="group-title" inset title="{{'创建者：'+item.Creator}}">
-            <van-cell border="{{true}}" title="{{item.Time}}" value="{{item.Label}}" lable="{{item.label}}" size="large" value-class="cell-value" custom-class="cell-custom" />
-        </van-cell-group>
+    <view class="s-container">
+        <block wx:if="{{role=='participant'}}" wx:for="{{results}}">
+            <van-cell-group custom-class="group-title" inset title="{{'创建者：'+item.Creator}}">
+                <van-cell border="{{true}}" title="{{item.Time}}" value="{{item.Label}}" lable="{{item.label}}" size="large" value-class="cell-value" custom-class="cell-custom" />
+            </van-cell-group>
+        </block>
 
     </view>
 

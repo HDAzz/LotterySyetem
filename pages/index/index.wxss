@@ -4,7 +4,8 @@ page {
 }
 
 .container {
-    background-color: #79ACED;
+    /* background: radial-gradient(#79ACED,rgb(52, 129, 230) ); */
+    background: radial-gradient(rgb(58, 193, 211), rgb(81, 138, 245));
     position: relative;
 }
 
@@ -117,7 +118,9 @@ page {
 }
 
 .choices {
-    background-color: #7C96EB;
+    /* background-color: #7C96EB; */
+    background: radial-gradient(rgb(81, 138, 245), rgb(58, 193, 211));
+    /* background: radial-gradient(rgb(126, 213, 224), rgb(90, 147, 173)); */
     margin-top: 120rpx;
     height: 200rpx;
     width: 500rpx;

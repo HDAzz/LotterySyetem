@@ -10,7 +10,9 @@ Page({
         hasLimitLists: [],
         secret: [],
         islimited: false,
-        tableText: '概率%'
+        tableText: '概率%',
+        playHasLimit:false,
+        Model:'概率模型'
     },
     formSubmit: function (e) {
         const _this=this;
@@ -19,8 +21,11 @@ Page({
             probabilityType,
             title,
             description,
+            playNumber
         } = e.detail.value;
         var num_type;
+        var play_Number=-1;
+        (playNumber==''||Number(playNumber)<=0)?play_Number=-1:play_Number=Number(playNumber);
         switch (probabilityType) {
             case "概率模型":
                 num_type = this.data.islimited ? 2 : 0;
@@ -54,7 +59,8 @@ Page({
             num_type: num_type,
             labels: labels,
             tops: tops,
-            secret: (this.data.secret).join('')
+            secret: (this.data.secret).join(''),
+            top:play_Number,
         }
         myData.labels.forEach(e => {
             if(!(e.name!=''&&e.count!=0)){
@@ -191,6 +197,9 @@ Page({
         })
     },
     onModelChange(e) {
+        this.setData({
+            Model:e.detail.value,
+        })
         if (e.detail.value == "定量模型")
             this.setData({
                 tableText: '数量（个）'
@@ -200,5 +209,10 @@ Page({
                 tableText: '概率%'
             })
         }
+    },
+    playLimitChange(e){
+        this.setData({
+            playHasLimit:e.detail.value,
+        })
     }
 })

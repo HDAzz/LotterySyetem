@@ -1,6 +1,7 @@
 /* pages/myLots/myLots.wxss */
 page{
-    background-color: #79ACED;
+    /* background-color: #79ACED; */
+    background: radial-gradient(rgb(58, 193, 211), rgb(81, 138, 245));
     height: 100%;
 }
 .container{

@@ -2,7 +2,7 @@ const {
     timestampToTime
 } = require("../../utils/util");
 import * as echarts from "../../components/echarts/echarts.min";
-var echart_data=[];
+var echart_data = [];
 Page({
 
     data: {
@@ -11,30 +11,31 @@ Page({
         ec: {
             onInit: initChart,
         },
-        remain:[]
+        remain: [],
+        desc:'',
     },
     onLoad(options) {
         console.log(options.id);
         var _this = this;
         if (options.role == 'creator') {
-         wx.request({
-              url: 'https://lottery.ptianya.top/lottery/'+options.id+'/join/results/labels',
-              method:"GET",
-              header:{
-                Authorization:wx.getStorageSync('access_token'),
-              },
-              success(res){
-                  console.log(res.data);
-                  echart_data=res.data.data
-                  echart_data.forEach(e => {
-                      e.name=e.name+" "+e.value+"个";
-                  });
-                  _this.setData({
-                      remain:res.data.remain.sort((a,b)=>{
-                          return b.name-a.name;
-                      })
-                  })
-              }
+            wx.request({
+                url: 'https://lottery.ptianya.top/lottery/' + options.id + '/join/results/labels',
+                method: "GET",
+                header: {
+                    Authorization: wx.getStorageSync('access_token'),
+                },
+                success(res) {
+                    console.log(res.data);
+                    echart_data = res.data.data
+                    echart_data.forEach(e => {
+                        e.name = e.name + " " + e.value + "个";
+                    });
+                    _this.setData({
+                        remain: res.data.remain.sort((a, b) => {
+                            return b.name - a.name;
+                        })
+                    })
+                }
             })
             wx.request({
                 url: 'https://lottery.ptianya.top/lottery/' + options.id + '/create/results',
@@ -62,6 +63,11 @@ Page({
                             label,
                             time
                         } = e;
+                        var desc = res.data.desc;
+                        _this.setData({
+                            desc:desc
+                        })
+                        console.log(desc)
                         var obj = {
                             username: username,
                             label: label,
@@ -94,12 +100,24 @@ Page({
                             Time,
                             Creator
                         } = e;
+                        wx.request({
+                            url: 'https://lottery.ptianya.top/lottery/' + options.id + '/info',
+                            method: 'GET',
+                            header: {
+                                Authorization: wx.getStorageSync('access_token')
+                            },
+                            success(res){
+                                _this.setData({
+                                    desc:res.data.data.desc,
+                                })
+                            }
+                        })
                         var obj = {
                             LotteryID: LotteryID,
                             UserID: UserID,
                             Label: Label,
                             Time: timestampToTime(Time),
-                            Creator: Creator
+                            Creator: Creator,
                         }
                         list.push(obj);
                     });
@@ -122,9 +140,9 @@ function initChart(canvas, width, height, dpr) {
     canvas.setChart(chart);
     var option = {
         backgroundColor: 'rgba(255,255,255,0.8)',
-        title:{
-            text:"抽奖分布",
-            left:'center',
+        title: {
+            text: "抽奖分布",
+            left: 'center',
         },
         tooltip: {
             trigger: 'item'
@@ -133,7 +151,7 @@ function initChart(canvas, width, height, dpr) {
             show: true,
             top: '5%',
             left: 'left',
-            orient:'vertical'
+            orient: 'vertical'
         },
         series: [{
             label: {
@@ -141,11 +159,11 @@ function initChart(canvas, width, height, dpr) {
                     fontSize: 14
                 }
             },
-            fontSize:'12',
+            fontSize: '12',
             type: 'pie',
             center: ['55%', '60%'], //位置
             radius: ['20%', '30%'], //圈大小
-            data:echart_data,
+            data: echart_data,
         }]
     };
     chart.setOption(option);

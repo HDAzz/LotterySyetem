@@ -24,7 +24,10 @@
                 <textarea class="circle-border" placeholder="" name="description" placeholder-class="center" />
             </view>
             <view class="card">
-                <text class="tips">如果留空，则对应奖项平分剩余概率</text>
+                <text class="tips">tips:
+                1.如果留空一个以上，则对应奖项平分剩余概率(不包括谢谢参与)，若只留空一个，则独占剩余概率
+                2.不足100%的剩余部分为“谢谢参与”的概率
+                3.如果总概率超出100%会按比例重新分配概率</text>
             </view>
             <view class="card">
                 <scroll-view class="table">
@@ -49,12 +52,15 @@
                 </scroll-view>
 
             </view>
-            <view class="card ">
+            <view class="card " wx:if="{{Model=='概率模型'}}">
                 <view class="section-title">奖项是否存在上限</view>
                 <switch style="margin-left: 50rpx;" name="pricesHaveLimit" bindchange="limitChange" />
             </view>
             <view class="card">
-                <text class="tips">如果留空，则对应奖项无上限，优先级高于概率设置</text>
+                <text class="tips">tips：
+                1.如果设置了相关奖项的上限，则该奖项余量为0时，再次抽到会被替换为“谢谢参与”
+                2.如果只是局部奖项设置上限，则其余奖项仍旧按照无上限处理
+                2.此项优先级高于概率设置</text>
             </view>
             <!-- 奖项是否存在上限 -->
             <view wx:if="{{islimited}}" class="card">
@@ -87,6 +93,19 @@
                     <view class="{{secret[2] ? 'activeView' : 0}}">{{secret[2]}}</view>
                     <view class="{{secret[3] ? 'activeView' : 0}}">{{secret[3]}}</view>
                 </view>
+            </view>
+            <view class="card ">
+                <view class="section-title">每个人抽取次数是否存在上限</view>
+                <switch style="margin-left: 50rpx;" name="playHasLimit" bindchange="playLimitChange" />
+            </view>
+            <view class="card">
+                <text class="tips">tips：
+                1.如果不设置上限，默认为无限次
+                2.输入上限小于等于0都按无限次处理</text>
+            </view>
+            <view wx:if="{{playHasLimit}}" class="card">
+                <view class="section-title">抽签次数上限:</view>
+                <input class="circle-border" name="playNumber" type="number" placeholder-class="center" placeholder="" />
             </view>
             <view class="card">
                 <van-button custom-class="choice" form-type="reset" type="info">重置</van-button>

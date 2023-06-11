@@ -1,13 +1,17 @@
 <!--pages/myResult/myResult.wxml-->
 <view class="container">
     <view class="info">
-        <text>您的抽奖结果为</text>
+        <text>您的抽签结果为</text>
     </view>
     <view class="resultbox">
         <text>{{result}}</text>
     </view>
-    <view class="descbox">
-        <text>{{desc}}</text>
+    <view class="desccontainer">
+        <view class="descbox"> 
+            <text>{{desc}}</text>
+        </view>
     </view>
-    <!-- <zhuanpan></zhuanpan> -->
+    <view class="againContainer">
+        <van-button type="default">再来一次</van-button>
+    </view>
 </view>
