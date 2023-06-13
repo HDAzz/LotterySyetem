@@ -1,13 +1,31 @@
 // app.js
 
 App({
-    onShow(){
+    onShow() {
         wx.connectSocket({
             url: 'wss://ws.l.ptianya.top/ws',
-            protocols:[wx.getStorageSync('access_token')],
-          })
+            protocols: [wx.getStorageSync('access_token')],
+        })
+        wx.onSocketMessage((msg) => {
+            var result = msg.data.replace(/\"/g, '').trim();
+            console.log(result)
+            wx.setStorageSync('result', result)
+            switch (result) {
+                case '已达上限':
+                    wx.navigateTo({
+                        url: '/pages/myResult/myResult?result=' + result + '&isLimited=true',
+                    })
+                    break;
+                default:
+                    wx.navigateTo({
+                        url: '/pages/myResult/myResult?result=' + result + '&isLimited=false',
+                    })
+                    break;
+            }
+
+        })
     },
-    onHide(){
+    onHide() {
         wx.closeSocket();
     },
     onLaunch() {
@@ -22,13 +40,13 @@ App({
                         data: {
                             "wx_code": res.code
                         },
-                        method:'POST',
-                        success:(res)=>{
+                        method: 'POST',
+                        success: (res) => {
                             // console.log(res);
-                            const access_token=res.data.data.access_token;
+                            const access_token = res.data.data.access_token;
                             wx.removeStorageSync('access_token');
                             wx.setStorageSync('access_token', access_token);
-                            this.globalData.access_token=access_token;
+                            this.globalData.access_token = access_token;
                         }
                     })
                 } else {
@@ -38,24 +56,18 @@ App({
         })
         wx.connectSocket({
             url: 'wss://ws.l.ptianya.top/ws',
-            protocols:[wx.getStorageSync('access_token')],
-          })
-        wx.onSocketMessage((msg) => {
-            const result=msg.data.replace(/\"/g,'');
-            console.log(result)
-            wx.setStorageSync('result', result)
-            wx.navigateTo({
-                url: '/pages/myResult/myResult?result='+wx.getStorageSync('result'),
-              })
+            protocols: [wx.getStorageSync('access_token')],
         })
+
         setInterval(() => {
-           wx.sendSocketMessage({
-             data: "",
-           })
-        }, 30*1000);
+            wx.sendSocketMessage({
+                data: "",
+            })
+        }, 30 * 1000);
     },
     globalData: {
         access_token: '',
-        desc:''
+        desc: '',
+        preSecret: []
     },
 })

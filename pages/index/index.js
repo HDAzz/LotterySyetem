@@ -12,13 +12,12 @@ Page({
         hasUserInfo: false,
     },
     onLoad(options) {
-        if(wx.getStorageSync('avatarUrl')&&wx.getStorageSync('nickname'))
-        {
-            
+        if (wx.getStorageSync('avatarUrl') && wx.getStorageSync('nickname')) {
+
             this.setData({
-                hasUserInfo:true,
-                avatarUrl:wx.getStorageSync('avatarUrl'),
-                nickname:wx.getStorageSync('nickname')
+                hasUserInfo: true,
+                avatarUrl: wx.getStorageSync('avatarUrl'),
+                nickname: wx.getStorageSync('nickname')
             })
         }
         const myData = {
@@ -38,6 +37,24 @@ Page({
     },
     onShow() {
         wx.hideHomeButton();
+        wx.onSocketMessage((msg) => {
+            var result = msg.data.replace(/\"/g, '').trim();
+            console.log(result)
+            wx.setStorageSync('result', result)
+            switch (result) {
+                case '已达上限':
+                    wx.navigateTo({
+                        url: '/pages/myResult/myResult?result=' + result + '&isLimited=true',
+                    })
+                    break;
+                default:
+                    wx.navigateTo({
+                        url: '/pages/myResult/myResult?result=' + result + '&isLimited=false',
+                    })
+                    break;
+            }
+
+        })
     },
     addLogBtnTap() {
         this.setData({
@@ -90,6 +107,7 @@ Page({
         })
     },
     onParticipateBtn() {
+
         const _this = this;
         if (this.data.secret.length < 4) {
             wx.showToast({
@@ -99,6 +117,7 @@ Page({
             })
             return;
         }
+        app.globalData.preSecret = _this.data.secret;
         wx.sendSocketMessage({
             data: '',
             success() {
@@ -120,7 +139,7 @@ Page({
                                 url: 'https://lottery.ptianya.top/lottery/' + res.data.data + '/info',
                                 method: 'GET',
                                 success(res) {
-                                    app.globalData.desc=res.data.data.desc;
+                                    app.globalData.desc = res.data.data.desc;
                                     // wx.setStorageSync('desc', res.data.data.desc);
                                 }
                             })
@@ -157,7 +176,7 @@ Page({
                                 url: 'https://lottery.ptianya.top/lottery/' + res.data.data + '/info',
                                 method: 'GET',
                                 success(res) {
-                                    app.globalData.desc=res.data.data.desc;
+                                    app.globalData.desc = res.data.data.desc;
                                     // wx.setStorageSync('desc', res.data.data.desc);
                                 }
                             })
@@ -189,14 +208,14 @@ Page({
         wx.setStorageSync('nickname', this.data.nickname);
     },
     onFinishClick() {
-        if (this.data.nickname!='' && this.data.avatarUrl != '') {
+        if (this.data.nickname != '' && this.data.avatarUrl != '') {
             wx.showToast({
                 title: '填写成功',
                 icon: 'success',
                 duration: 1000,
             })
             this.setData({
-                hasUserInfo:true,
+                hasUserInfo: true,
             })
         } else {
             wx.showToast({
@@ -205,6 +224,6 @@ Page({
                 duration: 1000,
             })
         }
-        
+
     },
 })

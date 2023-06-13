@@ -13,7 +13,7 @@
         </view>
         <van-cell-group title="奖项剩余情况：">
             <block wx:for="{{remain}}">
-                <van-cell title="{{item.name}}" value="{{item.value==-1?'INFINITY':item.value}}" />
+                <van-cell title="{{item.name}}  {{item.prop}}%" value="{{item.value==-1?'INFINITY':item.value}}" />
             </block>
         </van-cell-group>
         
